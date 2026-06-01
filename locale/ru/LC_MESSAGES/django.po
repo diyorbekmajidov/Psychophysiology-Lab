@@ -20,486 +20,486 @@ msgstr ""
 
 #: config/settings.py:88
 msgid "O'zbek"
-msgstr ""
+msgstr "Узбекский"
 
 #: config/settings.py:89
 msgid "Русский"
-msgstr ""
+msgstr "Русский"
 
 #: config/settings.py:90
 msgid "English"
-msgstr ""
+msgstr "Английский"
 
 #: psychology_lab/admin.py:15
 msgid "Umumiy ma'lumot"
-msgstr ""
+msgstr "Общая информация"
 
 #: psychology_lab/admin.py:18
 msgid "Aloqa ma'lumotlari"
-msgstr ""
+msgstr "Контактная информация"
 
 #: psychology_lab/admin.py:21
 msgid "Ijtimoiy tarmoqlar"
-msgstr ""
+msgstr "Социальные сети"
 
 #: psychology_lab/admin.py:39 psychology_lab/admin.py:59
 #: psychology_lab/admin.py:150 psychology_lab/models.py:50
 msgid "Kontent"
-msgstr ""
+msgstr "Контент"
 
 #: psychology_lab/admin.py:42
 msgid "Tugma"
-msgstr ""
+msgstr "Кнопка"
 
 #: psychology_lab/admin.py:56
 msgid "Sahifa ma'lumotlari"
-msgstr ""
+msgstr "Информация о странице"
 
 #: psychology_lab/admin.py:62
 msgid "Menyu sozlamalari"
-msgstr ""
+msgstr "Настройки меню"
 
 #: psychology_lab/admin.py:75 psychology_lab/admin.py:147
 #: psychology_lab/admin.py:204
 msgid "Asosiy ma'lumot"
-msgstr ""
+msgstr "Основная информация"
 
 #: psychology_lab/admin.py:78 psychology_lab/admin.py:133
 #: psychology_lab/admin.py:153 psychology_lab/admin.py:210
 msgid "Sozlamalar"
-msgstr ""
+msgstr "Настройки"
 
 #: psychology_lab/admin.py:92
 msgid "Shaxsiy ma'lumot"
-msgstr ""
+msgstr "Личная информация"
 
 #: psychology_lab/admin.py:95
 msgid "Aloqa va havolalar"
-msgstr ""
+msgstr "Контакты и ссылки"
 
 #: psychology_lab/admin.py:99
 msgid "Ko'rsatish"
-msgstr ""
+msgstr "Показать"
 
 #: psychology_lab/admin.py:112 psychology_lab/admin.py:223
 #: psychology_lab/models.py:86 psychology_lab/models.py:161
 #: psychology_lab/models.py:179 psychology_lab/models.py:238
 msgid "Rasm"
-msgstr ""
+msgstr "Изображение"
 
 #: psychology_lab/admin.py:123
 msgid "Maqola ma'lumotlari"
-msgstr ""
+msgstr "Информация о публикации"
 
 #: psychology_lab/admin.py:126 psychology_lab/models.py:139
 #: templates/psychology_lab/publications.html:54
 msgid "Annotatsiya"
-msgstr ""
+msgstr "Аннотация"
 
 #: psychology_lab/admin.py:130
 msgid "Fayllar va havolalar"
-msgstr ""
+msgstr "Файлы и ссылки"
 
 #: psychology_lab/admin.py:173
 msgid "Ko'rinish"
-msgstr ""
+msgstr "Внешний вид"
 
 #: psychology_lab/admin.py:207 psychology_lab/models.py:84
 #: psychology_lab/models.py:235
 msgid "Tavsif"
-msgstr ""
+msgstr "Описание"
 
 #: psychology_lab/forms.py:12
 msgid "To'liq ismingiz"
-msgstr ""
+msgstr "Ваше полное имя"
 
 #: psychology_lab/forms.py:17
 msgid "email@manzil.uz"
-msgstr ""
+msgstr "email@адрес.ru"
 
 #: psychology_lab/forms.py:22 psychology_lab/forms.py:36
 #: psychology_lab/models.py:196 templates/psychology_lab/contact.html:101
 msgid "Mavzu"
-msgstr ""
+msgstr "Тема"
 
 #: psychology_lab/forms.py:27
 msgid "Xabaringiz..."
-msgstr ""
+msgstr "Ваше сообщение..."
 
 #: psychology_lab/forms.py:34 templates/psychology_lab/contact.html:86
 msgid "To'liq ism"
-msgstr ""
+msgstr "Полное имя"
 
 #: psychology_lab/forms.py:35 templates/psychology_lab/contact.html:93
 msgid "Email manzil"
-msgstr ""
+msgstr "Адрес электронной почты"
 
 #: psychology_lab/forms.py:37 psychology_lab/models.py:197
 #: templates/psychology_lab/contact.html:81
 #: templates/psychology_lab/contact.html:108
 msgid "Xabar"
-msgstr ""
+msgstr "Сообщение"
 
 #: psychology_lab/models.py:7
 msgid "Sayt nomi"
-msgstr ""
+msgstr "Название сайта"
 
 #: psychology_lab/models.py:8
 msgid "Qisqa tavsif"
-msgstr ""
+msgstr "Краткое описание"
 
 #: psychology_lab/models.py:9
 msgid "Logo"
-msgstr ""
+msgstr "Логотип"
 
 #: psychology_lab/models.py:10 psychology_lab/models.py:113
 #: psychology_lab/models.py:195 templates/psychology_lab/contact.html:43
 msgid "Email"
-msgstr ""
+msgstr "Электронная почта"
 
 #: psychology_lab/models.py:11 templates/psychology_lab/contact.html:53
 msgid "Telefon"
-msgstr ""
+msgstr "Телефон"
 
 #: psychology_lab/models.py:12 templates/psychology_lab/contact.html:33
 msgid "Manzil"
-msgstr ""
+msgstr "Адрес"
 
 #: psychology_lab/models.py:13
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: psychology_lab/models.py:14
 msgid "Twitter / X"
-msgstr ""
+msgstr "Twitter / X"
 
 #: psychology_lab/models.py:15 psychology_lab/models.py:116
 msgid "LinkedIn"
-msgstr ""
+msgstr "LinkedIn"
 
 #: psychology_lab/models.py:16 psychology_lab/models.py:115
 msgid "ResearchGate"
-msgstr ""
+msgstr "ResearchGate"
 
 #: psychology_lab/models.py:17
 msgid "Footer matni"
-msgstr ""
+msgstr "Текст подвала"
 
 #: psychology_lab/models.py:20 psychology_lab/models.py:21
 msgid "Sayt Sozlamalari"
-msgstr ""
+msgstr "Настройки сайта"
 
 #: psychology_lab/models.py:32 psychology_lab/models.py:48
 #: psychology_lab/models.py:159 psychology_lab/models.py:234
 msgid "Sarlavha"
-msgstr ""
+msgstr "Заголовок"
 
 #: psychology_lab/models.py:33
 msgid "Qo'shimcha matn"
-msgstr ""
+msgstr "Подзаголовок"
 
 #: psychology_lab/models.py:34
 msgid "Orqa fon rasmi"
-msgstr ""
+msgstr "Фоновое изображение"
 
 #: psychology_lab/models.py:35
 msgid "Tugma matni"
-msgstr ""
+msgstr "Текст кнопки"
 
 #: psychology_lab/models.py:36
 msgid "Tugma havolasi"
-msgstr ""
+msgstr "Ссылка кнопки"
 
 #: psychology_lab/models.py:37 psychology_lab/models.py:88
 #: psychology_lab/models.py:119 psychology_lab/models.py:182
 msgid "Faolmi?"
-msgstr ""
+msgstr "Активно?"
 
 #: psychology_lab/models.py:40
 msgid "Hero Bo'lim"
-msgstr ""
+msgstr "Главный блок"
 
 #: psychology_lab/models.py:41
 msgid "Hero Bo'limlar"
-msgstr ""
+msgstr "Главные блоки"
 
 #: psychology_lab/models.py:49
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: psychology_lab/models.py:51
 msgid "Meta tavsif"
-msgstr ""
+msgstr "Мета-описание"
 
 #: psychology_lab/models.py:52
 msgid "Banner rasmi"
-msgstr ""
+msgstr "Изображение баннера"
 
 #: psychology_lab/models.py:53 psychology_lab/models.py:164
 msgid "Chop etilganmi?"
-msgstr ""
+msgstr "Опубликовано?"
 
 #: psychology_lab/models.py:54
 msgid "Menyuda ko'rinsinmi?"
-msgstr ""
+msgstr "Показывать в меню?"
 
 #: psychology_lab/models.py:55
 msgid "Menyu tartibi"
-msgstr ""
+msgstr "Порядок меню"
 
 #: psychology_lab/models.py:61
 msgid "Sahifa"
-msgstr ""
+msgstr "Страница"
 
 #: psychology_lab/models.py:62 psychology_lab/models.py:136
 #: templates/psychology_lab/base.html:151
 msgid "Sahifalar"
-msgstr ""
+msgstr "Страницы"
 
 #: psychology_lab/models.py:83 psychology_lab/models.py:178
 #: psychology_lab/models.py:211
 msgid "Nomi"
-msgstr ""
+msgstr "Название"
 
 #: psychology_lab/models.py:85 psychology_lab/models.py:213
 msgid "Ikonka"
-msgstr ""
+msgstr "Иконка"
 
 #: psychology_lab/models.py:87 psychology_lab/models.py:118
 #: psychology_lab/models.py:181 psychology_lab/models.py:214
 #: psychology_lab/models.py:241
 msgid "Tartib"
-msgstr ""
+msgstr "Порядок"
 
 #: psychology_lab/models.py:92
 msgid "Tadqiqot Yo'nalishi"
-msgstr ""
+msgstr "Направление исследований"
 
 #: psychology_lab/models.py:93
 msgid "Tadqiqot Yo'nalishlari"
-msgstr ""
+msgstr "Направления исследований"
 
 #: psychology_lab/models.py:101
 msgid "Asosiy Tadqiqotchi (PI)"
-msgstr ""
+msgstr "Главный исследователь (PI)"
 
 #: psychology_lab/models.py:102
 msgid "Postdoktorant"
-msgstr ""
+msgstr "Постдок"
 
 #: psychology_lab/models.py:103
 msgid "Doktorant (PhD)"
-msgstr ""
+msgstr "Докторант (PhD)"
 
 #: psychology_lab/models.py:104
 msgid "Magistrant"
-msgstr ""
+msgstr "Магистрант"
 
 #: psychology_lab/models.py:105
 msgid "Bakalavr Tadqiqotchi"
-msgstr ""
+msgstr "Студент-исследователь"
 
 #: psychology_lab/models.py:106
 msgid "Bitiruvchi"
-msgstr ""
+msgstr "Выпускник"
 
 #: psychology_lab/models.py:107
 msgid "Laboratoriya Xodimi"
-msgstr ""
+msgstr "Сотрудник лаборатории"
 
 #: psychology_lab/models.py:109 psychology_lab/models.py:194
 msgid "Ismi"
-msgstr ""
+msgstr "Имя"
 
 #: psychology_lab/models.py:110
 msgid "Lavozimi"
-msgstr ""
+msgstr "Должность"
 
 #: psychology_lab/models.py:111
 msgid "Biografiya"
-msgstr ""
+msgstr "Биография"
 
 #: psychology_lab/models.py:112
 msgid "Rasmi"
-msgstr ""
+msgstr "Фото"
 
 #: psychology_lab/models.py:114
 msgid "Google Scholar"
-msgstr ""
+msgstr "Google Scholar"
 
 #: psychology_lab/models.py:117
 msgid "Shaxsiy veb-sayt"
-msgstr ""
+msgstr "Личный веб-сайт"
 
 #: psychology_lab/models.py:123
 msgid "Jamoa A'zosi"
-msgstr ""
+msgstr "Член команды"
 
 #: psychology_lab/models.py:124
 msgid "Jamoa A'zolari"
-msgstr ""
+msgstr "Члены команды"
 
 #: psychology_lab/models.py:131
 msgid "Maqola sarlavhasi"
-msgstr ""
+msgstr "Название статьи"
 
 #: psychology_lab/models.py:132
 msgid "Mualliflar"
-msgstr ""
+msgstr "Авторы"
 
 #: psychology_lab/models.py:133
 msgid "Jurnal nomi"
-msgstr ""
+msgstr "Название журнала"
 
 #: psychology_lab/models.py:134 psychology_lab/models.py:237
 msgid "Yil"
-msgstr ""
+msgstr "Год"
 
 #: psychology_lab/models.py:135
 msgid "Tom"
-msgstr ""
+msgstr "Том"
 
 #: psychology_lab/models.py:137
 msgid "DOI havolasi"
-msgstr ""
+msgstr "Ссылка DOI"
 
 #: psychology_lab/models.py:138
 msgid "PDF fayl"
-msgstr ""
+msgstr "Файл PDF"
 
 #: psychology_lab/models.py:140 psychology_lab/models.py:165
 #: psychology_lab/models.py:240
 msgid "Tavsiya etilganmi?"
-msgstr ""
+msgstr "Рекомендуется?"
 
 #: psychology_lab/models.py:145
 msgid "Ilmiy Maqola"
-msgstr ""
+msgstr "Научная статья"
 
 #: psychology_lab/models.py:146 psychology_lab/views.py:70
 msgid "Ilmiy Maqolalar"
-msgstr ""
+msgstr "Научные статьи"
 
 #: psychology_lab/models.py:154
 msgid "Yangilik"
-msgstr ""
+msgstr "Новость"
 
 #: psychology_lab/models.py:155
 msgid "Tadbir"
-msgstr ""
+msgstr "Мероприятие"
 
 #: psychology_lab/models.py:156 psychology_lab/models.py:227
 msgid "Mukofot"
-msgstr ""
+msgstr "Награда"
 
 #: psychology_lab/models.py:157
 msgid "E'lon"
-msgstr ""
+msgstr "Объявление"
 
 #: psychology_lab/models.py:160
 msgid "Matn"
-msgstr ""
+msgstr "Текст"
 
 #: psychology_lab/models.py:162
 msgid "Turi"
-msgstr ""
+msgstr "Тип"
 
 #: psychology_lab/models.py:163
 msgid "Sana"
-msgstr ""
+msgstr "Дата"
 
 #: psychology_lab/models.py:170
 msgid "Yangilik / Tadbir"
-msgstr ""
+msgstr "Новость / Мероприятие"
 
 #: psychology_lab/models.py:171 psychology_lab/views.py:84
 #: templates/psychology_lab/news.html:4
 msgid "Yangiliklar va Tadbirlar"
-msgstr ""
+msgstr "Новости и мероприятия"
 
 #: psychology_lab/models.py:180
 msgid "Izoh"
-msgstr ""
+msgstr "Подпись"
 
 #: psychology_lab/models.py:186
 msgid "Galereya Rasmi"
-msgstr ""
+msgstr "Изображение галереи"
 
 #: psychology_lab/models.py:187
 msgid "Galereya Rasmlari"
-msgstr ""
+msgstr "Изображения галереи"
 
 #: psychology_lab/models.py:199
 msgid "O'qilganmi?"
-msgstr ""
+msgstr "Прочитано?"
 
 #: psychology_lab/models.py:203
 msgid "Aloqa Xabari"
-msgstr ""
+msgstr "Контактное сообщение"
 
 #: psychology_lab/models.py:204
 msgid "Aloqa Xabarlari"
-msgstr ""
+msgstr "Контактные сообщения"
 
 #: psychology_lab/models.py:212
 msgid "Qiymati"
-msgstr ""
+msgstr "Значение"
 
 #: psychology_lab/models.py:218
 msgid "Statistika"
-msgstr ""
+msgstr "Статистика"
 
 #: psychology_lab/models.py:219
 msgid "Statistikalar"
-msgstr ""
+msgstr "Статистика"
 
 #: psychology_lab/models.py:228
 msgid "Grant"
-msgstr ""
+msgstr "Грант"
 
 #: psychology_lab/models.py:229
 msgid "Tan olinish"
-msgstr ""
+msgstr "Признание"
 
 #: psychology_lab/models.py:230
 msgid "Yutuq"
-msgstr ""
+msgstr "Достижение"
 
 #: psychology_lab/models.py:231
 msgid "Nashr"
-msgstr ""
+msgstr "Публикация"
 
 #: psychology_lab/models.py:232
 msgid "Boshqa"
-msgstr ""
+msgstr "Другое"
 
 #: psychology_lab/models.py:236
 msgid "Kategoriya"
-msgstr ""
+msgstr "Категория"
 
 #: psychology_lab/models.py:239 templates/psychology_lab/achievements.html:128
 msgid "Havola"
-msgstr ""
+msgstr "Ссылка"
 
 #: psychology_lab/models.py:245
 msgid "Yutuq / Mukofot"
-msgstr ""
+msgstr "Достижение / Награда"
 
 #: psychology_lab/models.py:246 psychology_lab/views.py:120
 msgid "Yutuqlar va Mukofotlar"
-msgstr ""
+msgstr "Достижения и награды"
 
 #: psychology_lab/views.py:41 templates/psychology_lab/base.html:39
 #: templates/psychology_lab/base.html:142
 #: templates/psychology_lab/research.html:4
 #: templates/psychology_lab/research.html:13
 msgid "Tadqiqotlar"
-msgstr ""
+msgstr "Исследования"
 
 #: psychology_lab/views.py:55 templates/psychology_lab/base.html:40
 #: templates/psychology_lab/base.html:143 templates/psychology_lab/team.html:13
 msgid "Jamoa"
-msgstr ""
+msgstr "Команда"
 
 #: psychology_lab/views.py:97 templates/psychology_lab/achievements.html:147
 #: templates/psychology_lab/base.html:83 templates/psychology_lab/base.html:146
@@ -507,16 +507,16 @@ msgstr ""
 #: templates/psychology_lab/contact.html:4
 #: templates/psychology_lab/contact.html:15
 msgid "Bog'lanish"
-msgstr ""
+msgstr "Контакты"
 
 #: psychology_lab/views.py:102
 msgid "Xabaringiz muvaffaqiyatli yuborildi! Tez orada javob beramiz."
-msgstr ""
+msgstr "Ваше сообщение успешно отправлено! Мы ответим вам в ближайшее время."
 
 #: templates/psychology_lab/achievements.html:4
 #: templates/psychology_lab/achievements.html:13
 msgid "Yutuqlar"
-msgstr ""
+msgstr "Достижения"
 
 #: templates/psychology_lab/achievements.html:11
 #: templates/psychology_lab/base.html:38 templates/psychology_lab/base.html:141
@@ -529,204 +529,204 @@ msgstr ""
 #: templates/psychology_lab/research.html:11
 #: templates/psychology_lab/team.html:11
 msgid "Bosh sahifa"
-msgstr ""
+msgstr "Главная"
 
 #: templates/psychology_lab/achievements.html:15
 msgid "Muvaffaqiyatlar"
-msgstr ""
+msgstr "Успехи"
 
 #: templates/psychology_lab/achievements.html:16
 msgid "Yutuqlar va"
-msgstr ""
+msgstr "Достижения и"
 
 #: templates/psychology_lab/achievements.html:16
 msgid "Mukofotlar"
-msgstr ""
+msgstr "Награды"
 
 #: templates/psychology_lab/achievements.html:17
 msgid "Laboratoriyamizning ilmiy natijalari, mukofotlari va erishilgan yutuqlari."
-msgstr ""
+msgstr "Научные результаты, награды и достижения нашей лаборатории."
 
 #: templates/psychology_lab/achievements.html:28
 msgid "Eng Muhim Yutuqlar"
-msgstr ""
+msgstr "Главные достижения"
 
 #: templates/psychology_lab/achievements.html:60
 msgid "Ko'proq"
-msgstr ""
+msgstr "Подробнее"
 
 #: templates/psychology_lab/achievements.html:73
 #: templates/psychology_lab/home.html:98 templates/psychology_lab/news.html:26
 msgid "Barchasi"
-msgstr ""
+msgstr "Все"
 
 #: templates/psychology_lab/achievements.html:117
 #: templates/psychology_lab/home.html:158
 msgid "Tavsiya etilgan"
-msgstr ""
+msgstr "Рекомендуемое"
 
 #: templates/psychology_lab/achievements.html:145
 msgid "Yutuqlar admin paneldan qo'shiladi."
-msgstr ""
+msgstr "Достижения добавляются в панели администратора."
 
 #: templates/psychology_lab/base.html:41 templates/psychology_lab/base.html:144
 #: templates/psychology_lab/home.html:150
 #: templates/psychology_lab/publications.html:4
 #: templates/psychology_lab/publications.html:13
 msgid "Maqolalar"
-msgstr ""
+msgstr "Публикации"
 
 #: templates/psychology_lab/base.html:42 templates/psychology_lab/base.html:145
 #: templates/psychology_lab/home.html:188 templates/psychology_lab/news.html:13
 #: templates/psychology_lab/news_detail.html:13
 msgid "Yangiliklar"
-msgstr ""
+msgstr "Новости"
 
 #: templates/psychology_lab/base.html:139
 msgid "Navigatsiya"
-msgstr ""
+msgstr "Навигация"
 
 #: templates/psychology_lab/base.html:162
 #: templates/psychology_lab/contact.html:13
 #: templates/psychology_lab/contact.html:27
 msgid "Aloqa"
-msgstr ""
+msgstr "Связь"
 
 #: templates/psychology_lab/base.html:178
 msgid "Barcha huquqlar himoyalangan."
-msgstr ""
+msgstr "Все права защищены."
 
 #: templates/psychology_lab/contact.html:16
 #: templates/psychology_lab/home.html:258
 msgid "Biz bilan"
-msgstr ""
+msgstr "С нами"
 
 #: templates/psychology_lab/contact.html:16
 #: templates/psychology_lab/home.html:258
 msgid "Bog'laning"
-msgstr ""
+msgstr "Свяжитесь"
 
 #: templates/psychology_lab/contact.html:17
 msgid "Savollar, takliflar yoki hamkorlik bo'yicha biz bilan bog'laning."
-msgstr ""
+msgstr "Свяжитесь с нами по вопросам, предложениям или сотрудничеству."
 
 #: templates/psychology_lab/contact.html:27
 msgid "Ma'lumotlari"
-msgstr ""
+msgstr "Информация"
 
 #: templates/psychology_lab/contact.html:61
 msgid "Bizni kuzating"
-msgstr ""
+msgstr "Подписывайтесь на нас"
 
 #: templates/psychology_lab/contact.html:81
 msgid "Yuborish"
-msgstr ""
+msgstr "Отправить"
 
 #: templates/psychology_lab/contact.html:115
 #: templates/psychology_lab/home.html:264
 msgid "Xabar Yuborish"
-msgstr ""
+msgstr "Отправить сообщение"
 
 #: templates/psychology_lab/home.html:20
 msgid "Psixofiziologiya Tadqiqotlari"
-msgstr ""
+msgstr "Психофизиологические Исследования"
 
 #: templates/psychology_lab/home.html:26
 msgid "Inson Miyasini"
-msgstr ""
+msgstr "Человеческий Мозг"
 
 #: templates/psychology_lab/home.html:27
 msgid "O'rganamiz"
-msgstr ""
+msgstr "Исследуем"
 
 #: templates/psychology_lab/home.html:32
 msgid "Zamonaviy psixofiziologiya laboratoriyasi. Miya faoliyati, idrok va xulq-atvor munosabatlarini o'rganamiz."
-msgstr ""
+msgstr "Современная лаборатория психофизиологии. Исследуем активность мозга, когнитивные процессы и поведение."
 
 #: templates/psychology_lab/home.html:38
 msgid "Tadqiqotlarni ko'rish"
-msgstr ""
+msgstr "Посмотреть исследования"
 
 #: templates/psychology_lab/home.html:42 templates/psychology_lab/team.html:4
 #: templates/psychology_lab/team.html:16
 msgid "Jamoamiz"
-msgstr ""
+msgstr "Наша команда"
 
 #: templates/psychology_lab/home.html:49
 msgid "Scroll"
-msgstr ""
+msgstr "Скролл"
 
 #: templates/psychology_lab/home.html:74
 msgid "Ilmiy Yo'nalishlar"
-msgstr ""
+msgstr "Научные Направления"
 
 #: templates/psychology_lab/home.html:75
 msgid "Tadqiqot"
-msgstr ""
+msgstr "Исследования"
 
 #: templates/psychology_lab/home.html:75
 msgid "Yo'nalishlarimiz"
-msgstr ""
+msgstr "Направления"
 
 #: templates/psychology_lab/home.html:76
 msgid "Psixofiziologiyaning turli sohalarida chuqur ilmiy tadqiqotlar olib bormoqdamiz."
-msgstr ""
+msgstr "Мы проводим глубокие научные исследования в различных областях психофизиологии."
 
 #: templates/psychology_lab/home.html:110
 msgid "Bizning Jamoa"
-msgstr ""
+msgstr "Наша команда"
 
 #: templates/psychology_lab/home.html:111
 msgid "Tadqiqotchilar"
-msgstr ""
+msgstr "Исследователи"
 
 #: templates/psychology_lab/home.html:111
 msgid "Jamoasi"
-msgstr ""
+msgstr "Команда"
 
 #: templates/psychology_lab/home.html:112
 msgid "Turli mutaxassisliklardan iborat tajribali olimlar guruhi."
-msgstr ""
+msgstr "Опытная группа ученых различных специальностей."
 
 #: templates/psychology_lab/home.html:137
 msgid "Barcha a'zolar"
-msgstr ""
+msgstr "Все участники"
 
 #: templates/psychology_lab/home.html:149
 msgid "So'nggi Ishlar"
-msgstr ""
+msgstr "Последние работы"
 
 #: templates/psychology_lab/home.html:150
 msgid "Tavsiya Etilgan"
-msgstr ""
+msgstr "Рекомендуемые"
 
 #: templates/psychology_lab/home.html:151
 msgid "Nufuzli xalqaro jurnallarda nashr etilgan so'nggi ilmiy ishlarimiz."
-msgstr ""
+msgstr "Наши последние научные работы, опубликованные в престижных международных журналах."
 
 #: templates/psychology_lab/home.html:176
 msgid "Barcha maqolalar"
-msgstr ""
+msgstr "Все статьи"
 
 #: templates/psychology_lab/home.html:189
 msgid "So'nggi"
-msgstr ""
+msgstr "Последние"
 
 #: templates/psychology_lab/home.html:189
 msgid "Xabarlar"
-msgstr ""
+msgstr "Сообщения"
 
 #: templates/psychology_lab/home.html:190
 msgid "Laboratoriyamiz hayotidagi so'nggi yangiliklar va tadbirlar."
-msgstr ""
+msgstr "Последние новости и события нашей лаборатории."
 
 #: templates/psychology_lab/home.html:214 templates/psychology_lab/news.html:54
 msgid "Batafsil"
-msgstr ""
+msgstr "Подробнее"
 
 #: templates/psychology_lab/home.html:222
 msgid "Barcha yangiliklar"
-msgstr ""
+msgstr "Все новости"
 
 #: templates/psychology_lab/home.html:234
 msgid "Galereya"
@@ -734,11 +734,11 @@ msgstr ""
 
 #: templates/psychology_lab/home.html:235
 msgid "Laboratoriya"
-msgstr ""
+msgstr "Лаборатория"
 
 #: templates/psychology_lab/home.html:235
 msgid "Hayoti"
-msgstr ""
+msgstr "Жизнь"
 
 #: templates/psychology_lab/home.html:256
 msgid "Hamkorlik"
@@ -746,65 +746,65 @@ msgstr ""
 
 #: templates/psychology_lab/home.html:261
 msgid "Hamkorlik, intervyu yoki tadqiqot bo'yicha savollar uchun murojaat qiling."
-msgstr ""
+msgstr "Свяжитесь с нами по вопросам сотрудничества, интервью или исследований."
 
 #: templates/psychology_lab/news.html:15
 msgid "So'nggi xabarlar"
-msgstr ""
+msgstr "Последние сообщения"
 
 #: templates/psychology_lab/news.html:16
 msgid "Yangiliklar va"
-msgstr ""
+msgstr "Новости и"
 
 #: templates/psychology_lab/news.html:16
 msgid "Tadbirlar"
-msgstr ""
+msgstr "Мероприятия"
 
 #: templates/psychology_lab/news.html:17
 msgid "Laboratoriyamiz hayotidagi eng so'nggi yangiliklar, tadbirlar va e'lonlar."
-msgstr ""
+msgstr "Последние новости, мероприятия и объявления нашей лаборатории."
 
 #: templates/psychology_lab/news.html:27
 msgid "📰 Yangiliklar"
-msgstr ""
+msgstr "📰 Новости"
 
 #: templates/psychology_lab/news.html:28
 msgid "📅 Tadbirlar"
-msgstr ""
+msgstr "📅 Мероприятия"
 
 #: templates/psychology_lab/news.html:29
 msgid "🏆 Mukofotlar"
-msgstr ""
+msgstr "🏆 Награды"
 
 #: templates/psychology_lab/news.html:30
 msgid "📢 E'lonlar"
-msgstr ""
+msgstr "📢 Объявления"
 
 #: templates/psychology_lab/news.html:81
 msgid "Yangilik yoki tadbirlar topilmadi. Admin paneldan qo'shing."
-msgstr ""
+msgstr "Новости или мероприятия не найдены. Добавьте в панели администратора."
 
 #: templates/psychology_lab/news_detail.html:39
 msgid "Orqaga"
-msgstr ""
+msgstr "Назад"
 
 #: templates/psychology_lab/news_detail.html:49
 msgid "Mavzuga oid xabarlar"
-msgstr ""
+msgstr "Похожие новости"
 
 #: templates/psychology_lab/publications.html:15
 msgid "Ilmiy ishlar"
-msgstr ""
+msgstr "Научные работы"
 
 #: templates/psychology_lab/publications.html:16
 #: templates/psychology_lab/research.html:16
 #: templates/psychology_lab/team.html:16
 msgid "Bizning"
-msgstr ""
+msgstr "Наши"
 
 #: templates/psychology_lab/publications.html:16
 msgid "Maqolalarimiz"
-msgstr ""
+msgstr "Публикации"
 
 #: templates/psychology_lab/publications.html:17
 msgid "Nufuzli xalqaro jurnallarda nashr etilgan ilmiy ishlarimiz."
@@ -812,63 +812,63 @@ msgstr ""
 
 #: templates/psychology_lab/publications.html:27
 msgid "Barcha yillar"
-msgstr ""
+msgstr "Все года"
 
 #: templates/psychology_lab/publications.html:67
 msgid "PDF yuklab olish"
-msgstr ""
+msgstr "Скачать PDF"
 
 #: templates/psychology_lab/publications.html:96
 msgid "Maqolalar topilmadi. Admin paneldan qo'shing."
-msgstr ""
+msgstr "Статьи не найдены. Добавьте в панели администратора."
 
 #: templates/psychology_lab/research.html:15
 msgid "Biz nimalarni o'rganamiz?"
-msgstr ""
+msgstr "Что мы изучаем?"
 
 #: templates/psychology_lab/research.html:16
 msgid "Tadqiqotlarimiz"
-msgstr ""
+msgstr "Наши исследования"
 
 #: templates/psychology_lab/research.html:17
 msgid "Inson idroki, hissiyotlari va xulq-atvorining neyron hamda fiziologik asoslarini o'rganamiz."
-msgstr ""
+msgstr "Мы изучаем нейронные и физиологические основы познания, эмоций и поведения человека."
 
 #: templates/psychology_lab/research.html:49
 msgid "Tadqiqot yo'nalishlari topilmadi. Admin paneldan qo'shing."
-msgstr ""
+msgstr "Направления исследований не найдены. Добавьте в панели администратора."
 
 #: templates/psychology_lab/team.html:15
 msgid "A'zolar"
-msgstr ""
+msgstr "Участники"
 
 #: templates/psychology_lab/team.html:17
 msgid "Inson miyasini va xulq-atvorini o'rganayotgan tadqiqotchilarimiz."
-msgstr ""
+msgstr "Наши исследователи, изучающие человеческий мозг и поведение."
 
 #: templates/psychology_lab/team.html:27
 msgid "Ilmiy rahbar"
-msgstr ""
+msgstr "Научный руководитель"
 
 #: templates/psychology_lab/team.html:67
 msgid "Post-doktorantlar"
-msgstr ""
+msgstr "Постдокторанты"
 
 #: templates/psychology_lab/team.html:77
 msgid "Tayanch doktorantlar (PhD)"
-msgstr ""
+msgstr "Аспиранты (PhD)"
 
 #: templates/psychology_lab/team.html:87
 msgid "Magistrantlar"
-msgstr ""
+msgstr "Магистранты"
 
 #: templates/psychology_lab/team.html:97
 msgid "Bakalavr tadqiqotchilar"
-msgstr ""
+msgstr "Студенты-исследователи"
 
 #: templates/psychology_lab/team.html:107
 msgid "Laboratoriya xodimlari"
-msgstr ""
+msgstr "Сотрудники лаборатории"
 
 #: templates/psychology_lab/team.html:117
 msgid "Alumni"
@@ -876,4 +876,4 @@ msgstr ""
 
 #: templates/psychology_lab/team.html:127
 msgid "Jamoa a'zolari topilmadi. Admin paneldan qo'shing."
-msgstr ""
+msgstr "Члены команды не найдены. Добавьте в панели администратора."
