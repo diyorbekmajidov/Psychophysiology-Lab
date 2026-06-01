@@ -3,7 +3,6 @@ Django settings — Psychophysiology Lab
 """
 from pathlib import Path
 import environ
-from django.utils.translation import gettext_lazy as _
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(DEBUG=(bool, False))
@@ -83,6 +82,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # ── Internationalization ──────────────────────────────────────
 LANGUAGE_CODE = 'uz'
+
+from django.utils.translation import gettext_lazy as _
 LANGUAGES = [
     ('uz', _("O'zbek")),
     ('ru', _('Русский')),
