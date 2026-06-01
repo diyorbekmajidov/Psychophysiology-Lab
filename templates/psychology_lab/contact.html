@@ -1,0 +1,124 @@
+{% extends "psychology_lab/base.html" %}
+{% load static %}
+
+{% block title %}Contact Us — {{ site_settings.site_name|default:"Psychophysiology Lab" }}{% endblock %}
+
+{% block content %}
+
+<div class="page-banner">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{% url 'home' %}">Home</a>
+      <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
+      <span>Contact</span>
+    </div>
+    <div class="badge"><i class="fas fa-envelope"></i> Get In Touch</div>
+    <h1>Contact <span class="gradient-text">Us</span></h1>
+    <p>Have a question or want to collaborate? We'd love to hear from you.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Contact Info -->
+      <div class="glass-card contact-info fade-up">
+        <h2 style="font-size:1.5rem;margin-bottom:32px;">Get In <span class="gradient-text">Touch</span></h2>
+
+        {% if site_settings.address %}
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <h4>Address</h4>
+            <p>{{ site_settings.address }}</p>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if site_settings.email %}
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:{{ site_settings.email }}">{{ site_settings.email }}</a>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if site_settings.phone %}
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <h4>Phone</h4>
+            <a href="tel:{{ site_settings.phone }}">{{ site_settings.phone }}</a>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Social Links -->
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border);">
+          <h4 style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:16px;">Follow Us</h4>
+          <div class="footer-social">
+            {% if site_settings.twitter %}
+              <a href="{{ site_settings.twitter }}" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+            {% endif %}
+            {% if site_settings.linkedin %}
+              <a href="{{ site_settings.linkedin }}" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            {% endif %}
+            {% if site_settings.researchgate %}
+              <a href="{{ site_settings.researchgate }}" class="social-link" target="_blank"><i class="fab fa-researchgate"></i></a>
+            {% endif %}
+            {% if site_settings.facebook %}
+              <a href="{{ site_settings.facebook }}" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="glass-card contact-form-wrap fade-up">
+        <h2 style="font-size:1.5rem;margin-bottom:32px;">Send a <span class="gradient-text">Message</span></h2>
+        <form method="post" id="contact-form" novalidate>
+          {% csrf_token %}
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div class="form-group">
+              <label for="contact-name">Full Name *</label>
+              {{ form.name }}
+              {% if form.name.errors %}
+                <span style="color:#FF4646;font-size:0.8rem;">{{ form.name.errors.0 }}</span>
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email Address *</label>
+              {{ form.email }}
+              {% if form.email.errors %}
+                <span style="color:#FF4646;font-size:0.8rem;">{{ form.email.errors.0 }}</span>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contact-subject">Subject *</label>
+            {{ form.subject }}
+            {% if form.subject.errors %}
+              <span style="color:#FF4646;font-size:0.8rem;">{{ form.subject.errors.0 }}</span>
+            {% endif %}
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Message *</label>
+            {{ form.message }}
+            {% if form.message.errors %}
+              <span style="color:#FF4646;font-size:0.8rem;">{{ form.message.errors.0 }}</span>
+            {% endif %}
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" id="contact-submit">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

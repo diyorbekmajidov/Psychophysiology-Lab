@@ -1,0 +1,26 @@
+<div class="glass-card team-card fade-up">
+  {% if member.photo %}
+    <div class="team-avatar"><img src="{{ member.photo.url }}" alt="{{ member.name }}"></div>
+  {% else %}
+    <div class="team-avatar-placeholder">{{ member.name|first }}</div>
+  {% endif %}
+  <h3>{{ member.name }}</h3>
+  <div class="team-role">{{ member.get_role_display }}</div>
+  <div class="team-links">
+    {% if member.email %}
+      <a href="mailto:{{ member.email }}" class="team-link" title="Email"><i class="fas fa-envelope"></i></a>
+    {% endif %}
+    {% if member.google_scholar %}
+      <a href="{{ member.google_scholar }}" class="team-link" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+    {% endif %}
+    {% if member.researchgate %}
+      <a href="{{ member.researchgate }}" class="team-link" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+    {% endif %}
+    {% if member.linkedin %}
+      <a href="{{ member.linkedin }}" class="team-link" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    {% endif %}
+    {% if member.personal_website %}
+      <a href="{{ member.personal_website }}" class="team-link" target="_blank" title="Website"><i class="fas fa-globe"></i></a>
+    {% endif %}
+  </div>
+</div>

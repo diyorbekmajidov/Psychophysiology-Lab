@@ -3,6 +3,25 @@
 asgiref==3.11.1
     # via django
 django==6.0.5
+    # via
+    #   psychophysiology-lab (pyproject.toml)
+    #   django-ckeditor
+    #   django-ckeditor-5
+    #   django-js-asset
+    #   djangorestframework
+django-ckeditor==6.7.3
     # via psychophysiology-lab (pyproject.toml)
+django-ckeditor-5==0.2.20
+    # via psychophysiology-lab (pyproject.toml)
+django-environ==0.13.0
+    # via psychophysiology-lab (pyproject.toml)
+django-js-asset==3.1.2
+    # via django-ckeditor
+djangorestframework==3.17.1
+    # via psychophysiology-lab (pyproject.toml)
+pillow==12.2.0
+    # via
+    #   psychophysiology-lab (pyproject.toml)
+    #   django-ckeditor-5
 sqlparse==0.5.5
     # via django

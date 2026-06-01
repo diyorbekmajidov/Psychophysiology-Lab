@@ -1,0 +1,186 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{% if page_title %}{{ page_title }} — {% endif %}{{ site_settings.site_name|default:"Psychophysiology Lab" }}{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{{ site_settings.tagline|default:"Psixofiziologiya sohasida ilg'or tadqiqotlar." }}{% endblock %}">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+<!-- ── NAVBAR ─────────────────────────────────────────────── -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="{% url 'home' %}" class="nav-logo">
+      {% if site_settings.logo %}
+        <img src="{{ site_settings.logo.url }}" alt="{{ site_settings.site_name }}">
+      {% else %}
+        <div class="nav-logo-icon">🧠</div>
+        <span>{{ site_settings.site_name|default:"Psychophysiology Lab" }}</span>
+      {% endif %}
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="{% url 'home' %}">{% trans "Bosh sahifa" %}</a></li>
+      <li><a href="{% url 'research' %}">{% trans "Tadqiqotlar" %}</a></li>
+      <li><a href="{% url 'team' %}">{% trans "Jamoa" %}</a></li>
+      <li><a href="{% url 'publications' %}">{% trans "Maqolalar" %}</a></li>
+      <li><a href="{% url 'news' %}">{% trans "Yangiliklar" %}</a></li>
+      {% for page in menu_pages %}
+        <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+      {% endfor %}
+
+      <!-- ── Language Switcher ── -->
+      <li class="lang-switcher" id="langSwitcher">
+        <button class="lang-btn" id="langBtn">
+          {% if LANGUAGE_CODE == 'uz' %}🇺🇿 UZ
+          {% elif LANGUAGE_CODE == 'ru' %}🇷🇺 RU
+          {% else %}🇬🇧 EN{% endif %}
+          <i class="fas fa-chevron-down" style="font-size:0.6rem;margin-left:4px;"></i>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          <form action="{% url 'set_language' %}" method="post" id="lang-form-uz">
+            {% csrf_token %}
+            <input type="hidden" name="language" value="uz">
+            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+            <button type="submit" class="lang-option {% if LANGUAGE_CODE == 'uz' %}active{% endif %}">
+              🇺🇿 O'zbek
+            </button>
+          </form>
+          <form action="{% url 'set_language' %}" method="post" id="lang-form-ru">
+            {% csrf_token %}
+            <input type="hidden" name="language" value="ru">
+            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+            <button type="submit" class="lang-option {% if LANGUAGE_CODE == 'ru' %}active{% endif %}">
+              🇷🇺 Русский
+            </button>
+          </form>
+          <form action="{% url 'set_language' %}" method="post" id="lang-form-en">
+            {% csrf_token %}
+            <input type="hidden" name="language" value="en">
+            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+            <button type="submit" class="lang-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}">
+              🇬🇧 English
+            </button>
+          </form>
+        </div>
+      </li>
+
+      <li class="nav-cta"><a href="{% url 'contact' %}" class="btn btn-primary btn-sm">{% trans "Bog'lanish" %}</a></li>
+    </ul>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── MESSAGES ───────────────────────────────────────────── -->
+{% if messages %}
+  <div style="position:fixed;top:calc(var(--nav-height) + 16px);right:24px;z-index:9999;max-width:400px;">
+    <ul class="messages-list">
+      {% for message in messages %}
+        <li class="message-item message-{{ message.tags }}">
+          <i class="fas fa-{% if message.tags == 'success' %}check-circle{% elif message.tags == 'error' %}exclamation-circle{% else %}info-circle{% endif %}"></i>
+          {{ message }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+{% block content %}{% endblock %}
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="{% url 'home' %}" class="nav-logo">
+          {% if site_settings.logo %}
+            <img src="{{ site_settings.logo.url }}" alt="{{ site_settings.site_name }}">
+          {% else %}
+            <div class="nav-logo-icon">🧠</div>
+            <span>{{ site_settings.site_name|default:"Psychophysiology Lab" }}</span>
+          {% endif %}
+        </a>
+        <p>{{ site_settings.tagline|default:"Psixofiziologiya sohasida ilg'or tadqiqotlar." }}</p>
+        <div class="footer-social">
+          {% if site_settings.twitter %}
+            <a href="{{ site_settings.twitter }}" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+          {% endif %}
+          {% if site_settings.linkedin %}
+            <a href="{{ site_settings.linkedin }}" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          {% endif %}
+          {% if site_settings.researchgate %}
+            <a href="{{ site_settings.researchgate }}" class="social-link" target="_blank"><i class="fab fa-researchgate"></i></a>
+          {% endif %}
+          {% if site_settings.facebook %}
+            <a href="{{ site_settings.facebook }}" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>{% trans "Navigatsiya" %}</h4>
+        <ul class="footer-links">
+          <li><a href="{% url 'home' %}">{% trans "Bosh sahifa" %}</a></li>
+          <li><a href="{% url 'research' %}">{% trans "Tadqiqotlar" %}</a></li>
+          <li><a href="{% url 'team' %}">{% trans "Jamoa" %}</a></li>
+          <li><a href="{% url 'publications' %}">{% trans "Maqolalar" %}</a></li>
+          <li><a href="{% url 'news' %}">{% trans "Yangiliklar" %}</a></li>
+          <li><a href="{% url 'contact' %}">{% trans "Bog'lanish" %}</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>{% trans "Sahifalar" %}</h4>
+        <ul class="footer-links">
+          {% for page in menu_pages %}
+            <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+          {% empty %}
+            <li><a href="{% url 'contact' %}">{% trans "Bog'lanish" %}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>{% trans "Aloqa" %}</h4>
+        <ul class="footer-links">
+          {% if site_settings.email %}
+            <li><a href="mailto:{{ site_settings.email }}"><i class="fas fa-envelope" style="margin-right:6px;color:var(--accent);"></i>{{ site_settings.email }}</a></li>
+          {% endif %}
+          {% if site_settings.phone %}
+            <li><a href="tel:{{ site_settings.phone }}"><i class="fas fa-phone" style="margin-right:6px;color:var(--accent);"></i>{{ site_settings.phone }}</a></li>
+          {% endif %}
+          {% if site_settings.address %}
+            <li style="color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-map-marker-alt" style="margin-right:6px;color:var(--accent);"></i>{{ site_settings.address }}</li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {% now "Y" %} {{ site_settings.site_name|default:"Psychophysiology Lab" }}. {% trans "Barcha huquqlar himoyalangan." %}</p>
+      <p style="color:var(--text-muted);font-size:0.82rem;">{{ site_settings.footer_text }}</p>
+    </div>
+  </div>
+</footer>
+
+<script src="{% static 'js/main.js' %}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

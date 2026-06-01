@@ -1,0 +1,55 @@
+{% extends "psychology_lab/base.html" %}
+{% load static %}
+
+{% block title %}Research — {{ site_settings.site_name|default:"Psychophysiology Lab" }}{% endblock %}
+
+{% block content %}
+
+<div class="page-banner">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{% url 'home' %}">Home</a>
+      <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
+      <span>Research</span>
+    </div>
+    <div class="badge"><i class="fas fa-atom"></i> What We Study</div>
+    <h1>Our <span class="gradient-text">Research</span></h1>
+    <p>Investigating the neural and physiological underpinnings of human cognition, emotion, and behavior.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    {% if research_areas %}
+      <div class="research-grid">
+        {% for area in research_areas %}
+          <div class="glass-card research-card fade-up">
+            {% if area.image %}
+              <img src="{{ area.image.url }}" alt="{{ area.title }}"
+                   style="width:100%;height:180px;object-fit:cover;border-radius:12px 12px 0 0;margin:-32px -32px 24px -32px;width:calc(100% + 64px);">
+            {% endif %}
+            <div class="research-icon">
+              {% if area.icon == 'brain' %}🧠
+              {% elif area.icon == 'eye' %}👁️
+              {% elif area.icon == 'heart' %}❤️
+              {% elif area.icon == 'chart' %}📊
+              {% elif area.icon == 'lab' %}🔬
+              {% elif area.icon == 'signal' %}📡
+              {% elif area.icon == 'neuron' %}⚡
+              {% else %}💻{% endif %}
+            </div>
+            <h3>{{ area.title }}</h3>
+            <div class="rich-content">{{ area.description|safe }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div style="text-align:center;padding:80px 0;color:var(--text-muted);">
+        <div style="font-size:4rem;margin-bottom:16px;">🔬</div>
+        <p>Research areas will appear here. Add them from the admin panel.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}

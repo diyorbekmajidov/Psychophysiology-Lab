@@ -1,0 +1,43 @@
+{% extends "psychology_lab/base.html" %}
+{% load static %}
+
+{% block title %}{{ page_obj.title }} — {{ site_settings.site_name|default:"Psychophysiology Lab" }}{% endblock %}
+{% block meta_description %}{{ page_obj.meta_description|default:site_settings.tagline }}{% endblock %}
+
+{% block content %}
+
+<div class="page-banner">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{% url 'home' %}">Home</a>
+      <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
+      <span>{{ page_obj.title }}</span>
+    </div>
+    {% if page_obj.banner_image %}
+      <!-- Banner image shown as background -->
+    {% endif %}
+    <h1><span class="gradient-text">{{ page_obj.title }}</span></h1>
+    {% if page_obj.meta_description %}
+      <p>{{ page_obj.meta_description }}</p>
+    {% endif %}
+  </div>
+</div>
+
+<section class="section">
+  <div class="container" style="max-width:900px;">
+    <div class="glass-card fade-up" style="padding:48px;">
+      {% if page_obj.banner_image %}
+        <img src="{{ page_obj.banner_image.url }}" alt="{{ page_obj.title }}"
+             style="width:100%;border-radius:var(--radius-sm);margin-bottom:36px;aspect-ratio:16/6;object-fit:cover;">
+      {% endif %}
+      <div class="rich-content">{{ page_obj.content|safe }}</div>
+    </div>
+    <div style="margin-top:32px;">
+      <a href="{% url 'home' %}" class="btn btn-outline">
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
