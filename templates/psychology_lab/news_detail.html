@@ -1,5 +1,5 @@
 {% extends "psychology_lab/base.html" %}
-{% load static %}
+{% load static i18n %}
 
 {% block title %}{{ item.title }} — {{ site_settings.site_name|default:"Psychophysiology Lab" }}{% endblock %}
 
@@ -8,16 +8,16 @@
 <div class="page-banner">
   <div class="container">
     <div class="breadcrumb">
-      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'home' %}">{% trans "Bosh sahifa" %}</a>
       <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
-      <a href="{% url 'news' %}">News & Events</a>
+      <a href="{% url 'news' %}">{% trans "Yangiliklar" %}</a>
       <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
       <span>{{ item.title|truncatechars:40 }}</span>
     </div>
     <span class="news-type-badge news-type-{{ item.news_type }}" style="margin-bottom:16px;display:inline-flex;">{{ item.get_news_type_display }}</span>
     <h1 style="max-width:800px;margin:0 auto 16px;">{{ item.title }}</h1>
     <div class="news-meta" style="justify-content:center;">
-      <span><i class="fas fa-calendar-alt"></i> {{ item.date|date:"F d, Y" }}</span>
+      <span><i class="fas fa-calendar-alt"></i> {{ item.date|date:"d M Y" }}</span>
     </div>
   </div>
 </div>
@@ -36,7 +36,7 @@
         </div>
         <div style="margin-top:32px;">
           <a href="{% url 'news' %}" class="btn btn-outline">
-            <i class="fas fa-arrow-left"></i> Back to News
+            <i class="fas fa-arrow-left"></i> {% trans "Orqaga" %}
           </a>
         </div>
       </div>
@@ -46,13 +46,13 @@
         {% if related %}
           <div class="glass-card" style="padding:24px;">
             <h3 style="font-size:1rem;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);">
-              <i class="fas fa-newspaper" style="color:var(--accent);margin-right:8px;"></i> Related Posts
+              <i class="fas fa-newspaper" style="color:var(--accent);margin-right:8px;"></i> {% trans "Mavzuga oid xabarlar" %}
             </h3>
             {% for r in related %}
               <div style="margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border);">
                 <span class="news-type-badge news-type-{{ r.news_type }}" style="font-size:0.65rem;padding:2px 8px;">{{ r.get_news_type_display }}</span>
                 <a href="{% url 'news_detail' r.pk %}" style="display:block;color:var(--text-primary);font-weight:600;font-size:0.9rem;margin-bottom:6px;line-height:1.4;">{{ r.title }}</a>
-                <span style="font-size:0.8rem;color:var(--text-muted);">{{ r.date|date:"M d, Y" }}</span>
+                <span style="font-size:0.8rem;color:var(--text-muted);">{{ r.date|date:"d M Y" }}</span>
               </div>
             {% endfor %}
           </div>

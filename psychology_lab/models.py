@@ -220,3 +220,31 @@ class StatCounter(models.Model):
 
     def __str__(self):
         return f"{self.label}: {self.value}"
+
+
+class Achievement(models.Model):
+    CATEGORY_CHOICES = [
+        ('award',       _("Mukofot")),
+        ('grant',       _("Grant")),
+        ('recognition', _("Tan olinish")),
+        ('milestone',   _("Yutuq")),
+        ('publication', _("Nashr")),
+        ('other',       _("Boshqa")),
+    ]
+    title       = models.CharField(_("Sarlavha"), max_length=300)
+    description = RichTextField(_("Tavsif"), blank=True)
+    category    = models.CharField(_("Kategoriya"), max_length=20, choices=CATEGORY_CHOICES, default='award')
+    year        = models.PositiveIntegerField(_("Yil"))
+    image       = models.ImageField(_("Rasm"), upload_to='achievements/', blank=True, null=True)
+    link        = models.URLField(_("Havola"), blank=True)
+    is_featured = models.BooleanField(_("Tavsiya etilganmi?"), default=False)
+    order       = models.PositiveIntegerField(_("Tartib"), default=0)
+
+    class Meta:
+        ordering            = ['-year', 'order']
+        verbose_name        = _("Yutuq / Mukofot")
+        verbose_name_plural = _("Yutuqlar va Mukofotlar")
+
+    def __str__(self):
+        return f"{self.title} ({self.year})"
+

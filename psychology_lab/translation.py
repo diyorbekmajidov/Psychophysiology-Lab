@@ -1,7 +1,7 @@
 from modeltranslation.translator import register, TranslationOptions
 from .models import (
     SiteSettings, HeroSection, Page, ResearchArea,
-    TeamMember, Publication, NewsEvent, StatCounter
+    TeamMember, Publication, NewsEvent, StatCounter, Achievement
 )
 
 
@@ -43,3 +43,8 @@ class NewsEventTranslationOptions(TranslationOptions):
 @register(StatCounter)
 class StatCounterTranslationOptions(TranslationOptions):
     fields = ('label',)
+
+
+@register(Achievement)
+class AchievementTranslationOptions(TranslationOptions):
+    fields = ('title', 'description')

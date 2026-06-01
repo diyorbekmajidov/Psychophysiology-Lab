@@ -1,20 +1,20 @@
 {% extends "psychology_lab/base.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}Research — {{ site_settings.site_name|default:"Psychophysiology Lab" }}{% endblock %}
+{% block title %}{% trans "Tadqiqotlar" %} — {{ site_settings.site_name|default:"Psychophysiology Lab" }}{% endblock %}
 
 {% block content %}
 
 <div class="page-banner">
   <div class="container">
     <div class="breadcrumb">
-      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'home' %}">{% trans "Bosh sahifa" %}</a>
       <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
-      <span>Research</span>
+      <span>{% trans "Tadqiqotlar" %}</span>
     </div>
-    <div class="badge"><i class="fas fa-atom"></i> What We Study</div>
-    <h1>Our <span class="gradient-text">Research</span></h1>
-    <p>Investigating the neural and physiological underpinnings of human cognition, emotion, and behavior.</p>
+    <div class="badge"><i class="fas fa-atom"></i> {% trans "Biz nimalarni o'rganamiz?" %}</div>
+    <h1>{% trans "Bizning" %} <span class="gradient-text">{% trans "Tadqiqotlarimiz" %}</span></h1>
+    <p>{% trans "Inson idroki, hissiyotlari va xulq-atvorining neyron hamda fiziologik asoslarini o'rganamiz." %}</p>
   </div>
 </div>
 
@@ -46,7 +46,7 @@
     {% else %}
       <div style="text-align:center;padding:80px 0;color:var(--text-muted);">
         <div style="font-size:4rem;margin-bottom:16px;">🔬</div>
-        <p>Research areas will appear here. Add them from the admin panel.</p>
+        <p>{% trans "Tadqiqot yo'nalishlari topilmadi. Admin paneldan qo'shing." %}</p>
       </div>
     {% endif %}
   </div>

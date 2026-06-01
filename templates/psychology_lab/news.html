@@ -1,20 +1,20 @@
 {% extends "psychology_lab/base.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}News & Events — {{ site_settings.site_name|default:"Psychophysiology Lab" }}{% endblock %}
+{% block title %}{% trans "Yangiliklar va Tadbirlar" %} — {{ site_settings.site_name|default:"Psychophysiology Lab" }}{% endblock %}
 
 {% block content %}
 
 <div class="page-banner">
   <div class="container">
     <div class="breadcrumb">
-      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'home' %}">{% trans "Bosh sahifa" %}</a>
       <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
-      <span>News & Events</span>
+      <span>{% trans "Yangiliklar" %}</span>
     </div>
-    <div class="badge"><i class="fas fa-newspaper"></i> Latest Updates</div>
-    <h1>News & <span class="gradient-text">Events</span></h1>
-    <p>Stay up to date with our latest research highlights, events, and announcements.</p>
+    <div class="badge"><i class="fas fa-newspaper"></i> {% trans "So'nggi xabarlar" %}</div>
+    <h1>{% trans "Yangiliklar va" %} <span class="gradient-text">{% trans "Tadbirlar" %}</span></h1>
+    <p>{% trans "Laboratoriyamiz hayotidagi eng so'nggi yangiliklar, tadbirlar va e'lonlar." %}</p>
   </div>
 </div>
 
@@ -23,11 +23,11 @@
 
     <!-- Type Filter -->
     <div class="filter-bar">
-      <a href="{% url 'news' %}" class="filter-pill {% if not selected_type %}active{% endif %}">All</a>
-      <a href="?type=news" class="filter-pill {% if selected_type == 'news' %}active{% endif %}">📰 News</a>
-      <a href="?type=event" class="filter-pill {% if selected_type == 'event' %}active{% endif %}">📅 Events</a>
-      <a href="?type=award" class="filter-pill {% if selected_type == 'award' %}active{% endif %}">🏆 Awards</a>
-      <a href="?type=announcement" class="filter-pill {% if selected_type == 'announcement' %}active{% endif %}">📢 Announcements</a>
+      <a href="{% url 'news' %}" class="filter-pill {% if not selected_type %}active{% endif %}">{% trans "Barchasi" %}</a>
+      <a href="?type=news" class="filter-pill {% if selected_type == 'news' %}active{% endif %}">{% trans "📰 Yangiliklar" %}</a>
+      <a href="?type=event" class="filter-pill {% if selected_type == 'event' %}active{% endif %}">{% trans "📅 Tadbirlar" %}</a>
+      <a href="?type=award" class="filter-pill {% if selected_type == 'award' %}active{% endif %}">{% trans "🏆 Mukofotlar" %}</a>
+      <a href="?type=announcement" class="filter-pill {% if selected_type == 'announcement' %}active{% endif %}">{% trans "📢 E'lonlar" %}</a>
     </div>
 
     {% if news_list %}
@@ -48,10 +48,10 @@
               <span class="news-type-badge news-type-{{ item.news_type }}">{{ item.get_news_type_display }}</span>
               <h3>{{ item.title }}</h3>
               <div class="news-meta">
-                <span><i class="fas fa-calendar-alt"></i> {{ item.date|date:"M d, Y" }}</span>
+                <span><i class="fas fa-calendar-alt"></i> {{ item.date|date:"d M Y" }}</span>
               </div>
               <a href="{% url 'news_detail' item.pk %}" class="btn btn-outline btn-sm">
-                Read More <i class="fas fa-arrow-right"></i>
+                {% trans "Batafsil" %} <i class="fas fa-arrow-right"></i>
               </a>
             </div>
           </div>
@@ -78,7 +78,7 @@
     {% else %}
       <div style="text-align:center;padding:80px 0;color:var(--text-muted);">
         <div style="font-size:4rem;margin-bottom:16px;">📰</div>
-        <p>No news or events found. Add them from the admin panel.</p>
+        <p>{% trans "Yangilik yoki tadbirlar topilmadi. Admin paneldan qo'shing." %}</p>
       </div>
     {% endif %}
 

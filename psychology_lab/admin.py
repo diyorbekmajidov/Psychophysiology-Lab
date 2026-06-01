@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
-from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
+from modeltranslation.admin import TranslationAdmin
 from .models import (
     SiteSettings, HeroSection, Page, ResearchArea,
     TeamMember, Publication, NewsEvent, GalleryImage,
-    ContactMessage, StatCounter
+    ContactMessage, StatCounter, Achievement
 )
 
 
@@ -190,6 +190,37 @@ class ContactMessageAdmin(admin.ModelAdmin):
 class StatCounterAdmin(TranslationAdmin):
     list_display  = ('label', 'value', 'icon', 'order')
     list_editable = ('value', 'order')
+
+
+@admin.register(Achievement)
+class AchievementAdmin(TranslationAdmin):
+    list_display  = ('image_preview', 'title', 'category', 'year', 'is_featured', 'order')
+    list_editable = ('is_featured', 'order')
+    list_filter   = ('category', 'year', 'is_featured')
+    search_fields = ('title',)
+    ordering      = ['-year', 'order']
+    list_display_links = ('image_preview', 'title')
+    fieldsets = (
+        (_("Asosiy ma'lumot"), {
+            'fields': ('title', 'category', 'year', 'image', 'link')
+        }),
+        (_("Tavsif"), {
+            'fields': ('description',)
+        }),
+        (_("Sozlamalar"), {
+            'fields': ('is_featured', 'order')
+        }),
+    )
+
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html(
+                '<img src="{}" width="60" height="44" style="object-fit:cover;border-radius:6px;" />',
+                obj.image.url
+            )
+        icons = {'award':'🏆','grant':'💰','recognition':'🌟','milestone':'🎯','publication':'📄','other':'🔹'}
+        return icons.get(obj.category, '🏆')
+    image_preview.short_description = _("Rasm")
 
 
 # ── Admin site branding ──────────────────────────────────────

@@ -1,276 +1,268 @@
 {% extends "psychology_lab/base.html" %}
-{% load static %}
+{% load static i18n %}
 
 {% block content %}
 
-<!-- ── HERO SECTION ──────────────────────────────────────── -->
+<!-- ── HERO ─────────────────────────────────────────────────── -->
 <section class="hero">
   <div class="hero-bg">
     {% if hero.background_image %}
       <img src="{{ hero.background_image.url }}" alt="Lab background">
     {% endif %}
   </div>
+  <div class="hero-orb-wrap wrapper-1"><div class="hero-orb hero-orb-1"></div></div>
+  <div class="hero-orb-wrap wrapper-2"><div class="hero-orb hero-orb-2"></div></div>
   <div class="hero-particles" id="heroParticles"></div>
-
   <div class="container">
     <div class="hero-content">
       <div class="badge">
-        <i class="fas fa-flask"></i> Psychophysiology Research Lab
+        <i class="fas fa-atom"></i>
+        {% trans "Psixofiziologiya Tadqiqotlari" %}
       </div>
       <h1>
         {% if hero %}
-          {{ hero.title }}
+          {% autoescape off %}{{ hero.title }}{% endautoescape %}
         {% else %}
-          Exploring the <span class="gradient-text">Frontiers</span><br>of Human Mind
+          {% trans "Inson Miyasini" %}<br>
+          <span class="gradient-text">{% trans "O'rganamiz" %}</span>
         {% endif %}
       </h1>
       <p>
-        {% if hero %}
-          {{ hero.subtitle }}
-        {% else %}
-          Cutting-edge research at the intersection of psychology, neuroscience, and physiology — uncovering how the brain shapes behavior.
+        {% if hero %}{{ hero.subtitle }}
+        {% else %}{% trans "Zamonaviy psixofiziologiya laboratoriyasi. Miya faoliyati, idrok va xulq-atvor munosabatlarini o'rganamiz." %}
         {% endif %}
       </p>
       <div class="hero-actions">
-        <a href="{% if hero.cta_link %}{{ hero.cta_link }}{% else %}{% url 'research' %}{% endif %}"
-           class="btn btn-primary" id="hero-cta">
+        <a href="{{ hero.cta_link|default:'/research/' }}" class="btn btn-primary">
           <i class="fas fa-microscope"></i>
-          {{ hero.cta_text|default:"Explore Research" }}
+          {{ hero.cta_text|default:_("Tadqiqotlarni ko'rish") }}
         </a>
-        <a href="{% url 'publications' %}" class="btn btn-outline">
-          <i class="fas fa-book-open"></i> Our Publications
+        <a href="{% url 'team' %}" class="btn btn-glow">
+          <i class="fas fa-users"></i>
+          {% trans "Jamoamiz" %}
         </a>
       </div>
     </div>
   </div>
-
   <div class="hero-scroll">
-    <span>Scroll</span>
     <div class="scroll-line"></div>
+    <span>{% trans "Scroll" %}</span>
   </div>
 </section>
 
-<!-- ── STATS COUNTER ─────────────────────────────────────── -->
+<!-- ── STATS ─────────────────────────────────────────────────── -->
 {% if stats %}
 <section class="stats-section">
   <div class="container">
     <div class="stats-grid">
       {% for stat in stats %}
-        <div class="stat-item fade-up">
-          <div class="stat-value">
-            <span class="counter-val" data-target="{{ stat.value }}">0</span>+
-          </div>
-          <div class="stat-label">{{ stat.label }}</div>
-        </div>
+      <div class="stat-item fade-up">
+        <div class="stat-value" data-target="{{ stat.value }}">0</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
       {% endfor %}
     </div>
   </div>
 </section>
 {% endif %}
 
-<!-- ── RESEARCH AREAS ────────────────────────────────────── -->
+<!-- ── RESEARCH ───────────────────────────────────────────────── -->
 {% if research_areas %}
-<section class="section" id="research">
+<section class="section section-glow">
   <div class="container">
-    <div class="section-header fade-up">
-      <div class="badge"><i class="fas fa-atom"></i> What We Study</div>
-      <h2>Our <span class="gradient-text">Research Areas</span></h2>
-      <p>We investigate the neural and physiological mechanisms underlying human cognition, emotion, and behavior.</p>
+    <div class="section-header">
+      <div class="badge"><i class="fas fa-microscope"></i> {% trans "Ilmiy Yo'nalishlar" %}</div>
+      <h2>{% trans "Tadqiqot" %} <span class="gradient-text">{% trans "Yo'nalishlarimiz" %}</span></h2>
+      <p>{% trans "Psixofiziologiyaning turli sohalarida chuqur ilmiy tadqiqotlar olib bormoqdamiz." %}</p>
     </div>
     <div class="research-grid">
       {% for area in research_areas %}
-        <div class="glass-card research-card fade-up">
-          <div class="research-icon">
-            {% if area.icon == 'brain' %}🧠
-            {% elif area.icon == 'eye' %}👁️
-            {% elif area.icon == 'heart' %}❤️
-            {% elif area.icon == 'chart' %}📊
-            {% elif area.icon == 'lab' %}🔬
-            {% elif area.icon == 'signal' %}📡
-            {% elif area.icon == 'neuron' %}⚡
-            {% else %}💻{% endif %}
-          </div>
-          <h3>{{ area.title }}</h3>
-          <div class="rich-content">{{ area.description|safe|truncatewords_html:50 }}</div>
+      <div class="glass-card research-card fade-up">
+        <div class="research-icon">
+          {% if area.icon == 'brain' %}🧠
+          {% elif area.icon == 'eye' %}👁️
+          {% elif area.icon == 'heart' %}❤️
+          {% elif area.icon == 'chart' %}📊
+          {% elif area.icon == 'lab' %}🔬
+          {% elif area.icon == 'signal' %}📡
+          {% elif area.icon == 'neuron' %}⚡
+          {% else %}💻{% endif %}
         </div>
+        <h3>{{ area.title }}</h3>
+        <div class="rich-content">{{ area.description|safe }}</div>
+      </div>
       {% endfor %}
     </div>
-    <div style="text-align:center;margin-top:48px;" class="fade-up">
+    <div style="text-align:center;margin-top:44px;">
       <a href="{% url 'research' %}" class="btn btn-outline">
-        View All Research <i class="fas fa-arrow-right"></i>
+        {% trans "Barchasi" %} <i class="fas fa-arrow-right"></i>
       </a>
     </div>
   </div>
 </section>
 {% endif %}
 
-<!-- ── TEAM PREVIEW ──────────────────────────────────────── -->
+<!-- ── TEAM ───────────────────────────────────────────────────── -->
 {% if team_members %}
-<section class="section" style="background:var(--bg-secondary);">
+<section class="section section-alt">
   <div class="container">
-    <div class="section-header fade-up">
-      <div class="badge"><i class="fas fa-users"></i> The People</div>
-      <h2>Meet Our <span class="gradient-text">Team</span></h2>
-      <p>A diverse group of researchers passionate about unlocking the mysteries of the human mind.</p>
+    <div class="section-header">
+      <div class="badge"><i class="fas fa-user-graduate"></i> {% trans "Bizning Jamoa" %}</div>
+      <h2>{% trans "Tadqiqotchilar" %} <span class="gradient-text">{% trans "Jamoasi" %}</span></h2>
+      <p>{% trans "Turli mutaxassisliklardan iborat tajribali olimlar guruhi." %}</p>
     </div>
     <div class="team-grid">
       {% for member in team_members %}
-        <div class="glass-card team-card fade-up">
-          {% if member.photo %}
-            <div class="team-avatar"><img src="{{ member.photo.url }}" alt="{{ member.name }}"></div>
-          {% else %}
-            <div class="team-avatar-placeholder">{{ member.name|first }}</div>
-          {% endif %}
-          <h3>{{ member.name }}</h3>
-          <div class="team-role">{{ member.get_role_display }}</div>
-          <div class="team-links">
-            {% if member.email %}
-              <a href="mailto:{{ member.email }}" class="team-link" title="Email"><i class="fas fa-envelope"></i></a>
-            {% endif %}
-            {% if member.google_scholar %}
-              <a href="{{ member.google_scholar }}" class="team-link" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-            {% endif %}
-            {% if member.researchgate %}
-              <a href="{{ member.researchgate }}" class="team-link" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
-            {% endif %}
-            {% if member.linkedin %}
-              <a href="{{ member.linkedin }}" class="team-link" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            {% endif %}
+      <div class="glass-card team-card fade-up">
+        {% if member.photo %}
+          <div class="team-avatar">
+            <img src="{{ member.photo.url }}" alt="{{ member.name }}">
           </div>
+        {% else %}
+          <div class="team-avatar-placeholder">{{ member.name|first }}</div>
+        {% endif %}
+        <h3>{{ member.name }}</h3>
+        <div class="team-role">{{ member.get_role_display }}</div>
+        <div class="team-links">
+          {% if member.email %}<a href="mailto:{{ member.email }}" class="team-link" title="Email"><i class="fas fa-envelope"></i></a>{% endif %}
+          {% if member.google_scholar %}<a href="{{ member.google_scholar }}" class="team-link" title="Google Scholar" target="_blank"><i class="fas fa-graduation-cap"></i></a>{% endif %}
+          {% if member.linkedin %}<a href="{{ member.linkedin }}" class="team-link" title="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>{% endif %}
+          {% if member.researchgate %}<a href="{{ member.researchgate }}" class="team-link" title="ResearchGate" target="_blank"><i class="fab fa-researchgate"></i></a>{% endif %}
         </div>
+      </div>
       {% endfor %}
     </div>
-    <div style="text-align:center;margin-top:48px;" class="fade-up">
+    <div style="text-align:center;margin-top:44px;">
       <a href="{% url 'team' %}" class="btn btn-outline">
-        Meet the Full Team <i class="fas fa-arrow-right"></i>
+        {% trans "Barcha a'zolar" %} <i class="fas fa-arrow-right"></i>
       </a>
     </div>
   </div>
 </section>
 {% endif %}
 
-<!-- ── FEATURED PUBLICATIONS ─────────────────────────────── -->
+<!-- ── PUBLICATIONS ────────────────────────────────────────────── -->
 {% if featured_publications %}
-<section class="section">
+<section class="section section-glow">
   <div class="container">
-    <div class="section-header fade-up">
-      <div class="badge"><i class="fas fa-file-alt"></i> Research Output</div>
-      <h2>Featured <span class="gradient-text">Publications</span></h2>
-      <p>Selected works from our lab published in leading scientific journals.</p>
+    <div class="section-header">
+      <div class="badge"><i class="fas fa-book"></i> {% trans "So'nggi Ishlar" %}</div>
+      <h2>{% trans "Tavsiya Etilgan" %} <span class="gradient-text">{% trans "Maqolalar" %}</span></h2>
+      <p>{% trans "Nufuzli xalqaro jurnallarda nashr etilgan so'nggi ilmiy ishlarimiz." %}</p>
     </div>
     <div class="pub-list">
       {% for pub in featured_publications %}
-        <div class="glass-card pub-card fade-up">
-          <div class="pub-year">{{ pub.year }}</div>
-          <div class="pub-content">
-            <div class="pub-featured-badge"><i class="fas fa-star"></i> Featured</div>
-            <div class="pub-title">{{ pub.title }}</div>
-            <div class="pub-authors">{{ pub.authors }}</div>
-            <div class="pub-journal">{{ pub.journal }}{% if pub.volume %}, Vol. {{ pub.volume }}{% endif %}{% if pub.pages %}, pp. {{ pub.pages }}{% endif %}</div>
-            <div class="pub-actions">
-              {% if pub.doi_link %}
-                <a href="{{ pub.doi_link }}" class="btn btn-outline btn-sm" target="_blank">
-                  <i class="fas fa-external-link-alt"></i> DOI
-                </a>
-              {% endif %}
-              {% if pub.pdf_file %}
-                <a href="{{ pub.pdf_file.url }}" class="btn btn-primary btn-sm" target="_blank">
-                  <i class="fas fa-file-pdf"></i> PDF
-                </a>
-              {% endif %}
-            </div>
+      <div class="glass-card pub-card fade-up">
+        <div class="pub-year">{{ pub.year }}</div>
+        <div class="pub-content">
+          <div class="pub-featured-badge"><i class="fas fa-star"></i> {% trans "Tavsiya etilgan" %}</div>
+          <div class="pub-title">{{ pub.title }}</div>
+          <div class="pub-authors">{{ pub.authors }}</div>
+          <div class="pub-journal">{{ pub.journal }}</div>
+          <div class="pub-actions">
+            {% if pub.doi_link %}
+              <a href="{{ pub.doi_link }}" class="btn btn-outline btn-sm" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+            {% endif %}
+            {% if pub.pdf_file %}
+              <a href="{{ pub.pdf_file.url }}" class="btn btn-glow btn-sm" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
+            {% endif %}
           </div>
         </div>
+      </div>
       {% endfor %}
     </div>
-    <div style="text-align:center;margin-top:48px;" class="fade-up">
+    <div style="text-align:center;margin-top:44px;">
       <a href="{% url 'publications' %}" class="btn btn-outline">
-        View All Publications <i class="fas fa-arrow-right"></i>
+        {% trans "Barcha maqolalar" %} <i class="fas fa-arrow-right"></i>
       </a>
     </div>
   </div>
 </section>
 {% endif %}
 
-<!-- ── LATEST NEWS ───────────────────────────────────────── -->
+<!-- ── NEWS ───────────────────────────────────────────────────── -->
 {% if latest_news %}
-<section class="section" style="background:var(--bg-secondary);">
+<section class="section section-alt">
   <div class="container">
-    <div class="section-header fade-up">
-      <div class="badge"><i class="fas fa-newspaper"></i> Latest Updates</div>
-      <h2>News & <span class="gradient-text">Events</span></h2>
-      <p>Stay updated with the latest happenings in our lab.</p>
+    <div class="section-header">
+      <div class="badge"><i class="fas fa-newspaper"></i> {% trans "Yangiliklar" %}</div>
+      <h2>{% trans "So'nggi" %} <span class="gradient-text">{% trans "Xabarlar" %}</span></h2>
+      <p>{% trans "Laboratoriyamiz hayotidagi so'nggi yangiliklar va tadbirlar." %}</p>
     </div>
     <div class="news-grid">
       {% for item in latest_news %}
-        <div class="glass-card news-card fade-up">
-          {% if item.image %}
-            <div class="news-card-img"><img src="{{ item.image.url }}" alt="{{ item.title }}"></div>
-          {% else %}
-            <div class="news-img-placeholder">
-              {% if item.news_type == 'event' %}📅
-              {% elif item.news_type == 'award' %}🏆
-              {% elif item.news_type == 'announcement' %}📢
-              {% else %}📰{% endif %}
-            </div>
-          {% endif %}
-          <div class="news-card-body">
-            <span class="news-type-badge news-type-{{ item.news_type }}">{{ item.get_news_type_display }}</span>
-            <h3>{{ item.title }}</h3>
-            <div class="news-meta">
-              <span><i class="fas fa-calendar"></i> {{ item.date|date:"M d, Y" }}</span>
-            </div>
-            <a href="{% url 'news_detail' item.pk %}" class="btn btn-outline btn-sm">
-              Read More <i class="fas fa-arrow-right"></i>
-            </a>
+      <div class="glass-card news-card fade-up">
+        {% if item.image %}
+          <div class="news-card-img"><img src="{{ item.image.url }}" alt="{{ item.title }}"></div>
+        {% else %}
+          <div class="news-img-placeholder">
+            {% if item.news_type == 'award' %}🏆
+            {% elif item.news_type == 'event' %}📅
+            {% elif item.news_type == 'announcement' %}📢
+            {% else %}📰{% endif %}
           </div>
+        {% endif %}
+        <div class="news-card-body">
+          <span class="news-type-badge news-type-{{ item.news_type }}">{{ item.get_news_type_display }}</span>
+          <h3>{{ item.title }}</h3>
+          <div class="news-meta">
+            <i class="fas fa-calendar-alt" style="color:var(--accent);"></i>
+            {{ item.date|date:"d M Y" }}
+          </div>
+          <div class="news-excerpt">{{ item.content|striptags|truncatewords:25 }}</div>
+          <a href="{% url 'news_detail' item.pk %}" class="btn btn-outline btn-sm">
+            {% trans "Batafsil" %} <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
+      </div>
       {% endfor %}
     </div>
-    <div style="text-align:center;margin-top:48px;" class="fade-up">
+    <div style="text-align:center;margin-top:44px;">
       <a href="{% url 'news' %}" class="btn btn-outline">
-        All News & Events <i class="fas fa-arrow-right"></i>
+        {% trans "Barcha yangiliklar" %} <i class="fas fa-arrow-right"></i>
       </a>
     </div>
   </div>
 </section>
 {% endif %}
 
-<!-- ── GALLERY ───────────────────────────────────────────── -->
+<!-- ── GALLERY ────────────────────────────────────────────────── -->
 {% if gallery %}
 <section class="section">
   <div class="container">
-    <div class="section-header fade-up">
-      <div class="badge"><i class="fas fa-images"></i> Lab Life</div>
-      <h2>Our <span class="gradient-text">Gallery</span></h2>
+    <div class="section-header">
+      <div class="badge"><i class="fas fa-images"></i> {% trans "Galereya" %}</div>
+      <h2>{% trans "Laboratoriya" %} <span class="gradient-text">{% trans "Hayoti" %}</span></h2>
     </div>
     <div class="gallery-grid">
       {% for img in gallery %}
-        <div class="gallery-item fade-up">
-          <img src="{{ img.image.url }}" alt="{{ img.title }}">
-          <div class="gallery-overlay">
-            <i class="fas fa-search-plus" style="font-size:1.5rem;color:#fff;"></i>
-            <span>{{ img.title }}</span>
-          </div>
+      <div class="gallery-item fade-up">
+        <img src="{{ img.image.url }}" alt="{{ img.title }}">
+        <div class="gallery-overlay">
+          <i class="fas fa-expand" style="font-size:1.5rem;color:#fff;margin-bottom:8px;"></i>
+          <span>{{ img.title }}</span>
         </div>
+      </div>
       {% endfor %}
     </div>
   </div>
 </section>
 {% endif %}
 
-<!-- ── CTA BANNER ────────────────────────────────────────── -->
-<section class="section-sm" style="background:linear-gradient(135deg,rgba(108,99,255,0.15) 0%,rgba(0,212,255,0.08) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-  <div class="container" style="text-align:center;">
-    <div class="fade-up">
-      <h2 style="font-size:2.2rem;margin-bottom:16px;">Interested in <span class="gradient-text">Collaborating?</span></h2>
-      <p style="color:var(--text-secondary);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto;">
-        We welcome collaborations from researchers, students, and institutions worldwide.
-      </p>
-      <a href="{% url 'contact' %}" class="btn btn-primary" id="home-collab-cta">
-        <i class="fas fa-handshake"></i> Get In Touch
-      </a>
-    </div>
+<!-- ── CTA ────────────────────────────────────────────────────── -->
+<section class="section-sm" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,111,255,0.06),rgba(0,229,255,0.04));border-top:1px solid var(--border);border-bottom:1px solid var(--border);"></div>
+  <div class="container" style="text-align:center;position:relative;">
+    <div class="badge"><i class="fas fa-envelope"></i> {% trans "Hamkorlik" %}</div>
+    <h2 style="font-size:clamp(1.8rem,4vw,3rem);margin-bottom:16px;">
+      {% trans "Biz bilan" %} <span class="gradient-text">{% trans "Bog'laning" %}</span>
+    </h2>
+    <p style="color:var(--text-secondary);font-size:1rem;max-width:480px;margin:0 auto 36px;line-height:1.8;">
+      {% trans "Hamkorlik, intervyu yoki tadqiqot bo'yicha savollar uchun murojaat qiling." %}
+    </p>
+    <a href="{% url 'contact' %}" class="btn btn-primary" style="font-size:1rem;padding:16px 38px;">
+      <i class="fas fa-paper-plane"></i> {% trans "Xabar Yuborish" %}
+    </a>
   </div>
 </section>
 

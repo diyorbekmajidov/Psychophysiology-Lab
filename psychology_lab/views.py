@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.utils.translation import gettext_lazy as _
 from .models import (
     SiteSettings, HeroSection, Page, ResearchArea,
-    TeamMember, Publication, NewsEvent, GalleryImage, StatCounter
+    TeamMember, Publication, NewsEvent, GalleryImage, StatCounter, Achievement
 )
 from .forms import ContactForm
 
@@ -105,6 +105,20 @@ def contact(request):
         form = ContactForm()
     context['form'] = form
     return render(request, 'psychology_lab/contact.html', context)
+
+
+def achievements(request):
+    context = get_site_context(request)
+    all_achievements = Achievement.objects.all()
+    cat_filter = request.GET.get('category')
+    if cat_filter:
+        all_achievements = all_achievements.filter(category=cat_filter)
+    context['achievements']      = all_achievements
+    context['featured']          = Achievement.objects.filter(is_featured=True)[:3]
+    context['selected_category'] = cat_filter
+    context['categories']        = Achievement.CATEGORY_CHOICES
+    context['page_title'] = _('Yutuqlar va Mukofotlar')
+    return render(request, 'psychology_lab/achievements.html', context)
 
 
 def page_detail(request, slug):

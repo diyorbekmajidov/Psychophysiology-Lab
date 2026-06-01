@@ -140,3 +140,48 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// ── Scroll Progress Indicator ───────────────────────────────
+window.addEventListener('scroll', () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+  const progress = document.getElementById('scrollProgress');
+  if (progress) {
+    progress.style.width = scrolled + '%';
+  }
+});
+
+// ── Card Hover Glow coordinates tracking ─────────────────────
+const cards = document.querySelectorAll('.glass-card');
+cards.forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  });
+});
+
+// ── Hero Orb Mouse Parallax ──────────────────────────────────
+const heroSection = document.querySelector('.hero');
+if (heroSection) {
+  const orbs = heroSection.querySelectorAll('.hero-orb');
+  heroSection.addEventListener('mousemove', e => {
+    const rect = heroSection.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    
+    orbs.forEach((orb, i) => {
+      const factor = (i + 1) * 30; // parallax sensitivity
+      orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+    });
+  });
+  
+  heroSection.addEventListener('mouseleave', () => {
+    orbs.forEach(orb => {
+      orb.style.transform = 'translate(0px, 0px)';
+    });
+  });
+}
