@@ -14,9 +14,7 @@ ALLOWED_HOSTS = ['*']
 
 # ── Applications ──────────────────────────────────────────────
 INSTALLED_APPS = [
-    # Jazzmin — must be before django.contrib.admin
     'jazzmin',
-    # modeltranslation — must be before django.contrib.admin
     'modeltranslation',
 
     'django.contrib.admin',
@@ -30,8 +28,10 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
 
-    # Local
     'psychology_lab',
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://psixolab.samdpi.uz",
 ]
 
 MIDDLEWARE = [
