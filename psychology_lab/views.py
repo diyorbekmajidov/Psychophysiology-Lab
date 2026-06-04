@@ -42,6 +42,13 @@ def research(request):
     return render(request, 'psychology_lab/research.html', context)
 
 
+def research_detail(request, pk):
+    context = get_site_context(request)
+    context['area'] = get_object_or_404(ResearchArea, pk=pk, is_active=True)
+    context['other_areas'] = ResearchArea.objects.filter(is_active=True).exclude(pk=pk)[:5]
+    return render(request, 'psychology_lab/research_detail.html', context)
+
+
 def team(request):
     context = get_site_context(request)
     all_members = TeamMember.objects.filter(is_active=True)

@@ -88,8 +88,13 @@
           {% elif area.icon == 'neuron' %}⚡
           {% else %}💻{% endif %}
         </div>
-        <h3>{{ area.title }}</h3>
+        <h3><a href="{% url 'research_detail' area.pk %}">{{ area.title }}</a></h3>
         <div class="rich-content">{{ area.description|safe }}</div>
+        <div style="margin-top:20px;">
+          <a href="{% url 'research_detail' area.pk %}" class="btn btn-outline btn-sm">
+            {% trans "Batafsil" %} <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
       {% endfor %}
     </div>

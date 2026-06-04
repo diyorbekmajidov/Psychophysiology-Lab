@@ -472,6 +472,8 @@ body::before {
   z-index: -1;
 }
 .research-card h3 { font-size: 1.15rem; margin-bottom: 12px; }
+.research-card h3 a { color: inherit; transition: color var(--transition); }
+.research-card h3 a:hover { color: var(--accent); }
 .research-card .rich-content, .research-card p {
   color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75;
   display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
