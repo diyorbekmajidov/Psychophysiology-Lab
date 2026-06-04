@@ -19,14 +19,14 @@
         <i class="fas fa-atom"></i>
         {% trans "Psixofiziologiya Tadqiqotlari" %}
       </div>
-      <h3>
+      <h2>
         {% if hero %}
           {% autoescape off %}{{ hero.title }}{% endautoescape %}
         {% else %}
           {% trans "Inson Miyasini" %}<br>
           <span class="gradient-text">{% trans "O'rganamiz" %}</span>
         {% endif %}
-      </h3>
+      </h2>
       <p>
         {% if hero %}{{ hero.subtitle }}
         {% else %}{% trans "Zamonaviy psixofiziologiya laboratoriyasi. Miya faoliyati, idrok va xulq-atvor munosabatlarini o'rganamiz." %}
