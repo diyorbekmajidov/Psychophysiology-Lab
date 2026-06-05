@@ -13,7 +13,7 @@ from .models import (
 class SiteSettingsAdmin(TranslationAdmin):
     fieldsets = (
         (_("Umumiy ma'lumot"), {
-            'fields': ('site_name', 'tagline', 'logo', 'footer_text')
+            'fields': ('site_name', 'tagline', 'logo', 'logo_secondary', 'footer_text')
         }),
         (_("Aloqa ma'lumotlari"), {
             'fields': ('email', 'phone', 'address')

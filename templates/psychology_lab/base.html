@@ -25,15 +25,18 @@
 <!-- ── NAVBAR ─────────────────────────────────────────────── -->
 <nav class="navbar" id="navbar">
   <div class="nav-container">
+
+    <!-- Left Logo (University) -->
     <a href="{% url 'home' %}" class="nav-logo">
       {% if site_settings.logo %}
         <img src="{{ site_settings.logo.url }}" alt="{{ site_settings.site_name }}">
       {% else %}
-        <div class="nav-logo-icon">🧠</div>
-        <span>{{ site_settings.site_name|default:"Psychophysiology Lab" }}</span>
+        <div class="nav-logo-icon">🏫</div>
+        <span class="nav-logo-text">{{ site_settings.site_name|default:"Universtet" }}</span>
       {% endif %}
     </a>
 
+    <!-- Center Nav Links -->
     <ul class="nav-links" id="navLinks">
       <li><a href="{% url 'home' %}">{% trans "Bosh sahifa" %}</a></li>
       <li><a href="{% url 'research' %}">{% trans "Tadqiqotlar" %}</a></li>
@@ -83,9 +86,22 @@
       <li class="nav-cta"><a href="{% url 'contact' %}" class="btn btn-primary btn-sm">{% trans "Bog'lanish" %}</a></li>
     </ul>
 
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
+
+    <!-- Right: secondary logo + mobile toggle -->
+    <div class="nav-right">
+      <a href="{% url 'home' %}" class="nav-logo-secondary">
+        {% if site_settings.logo_secondary %}
+          <img src="{{ site_settings.logo_secondary.url }}" alt="Lab Logo">
+        {% else %}
+          <div class="nav-logo-icon-secondary">🧠</div>
+        {% endif %}
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
   </div>
 </nav>
 
@@ -110,14 +126,22 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="{% url 'home' %}" class="nav-logo">
-          {% if site_settings.logo %}
-            <img src="{{ site_settings.logo.url }}" alt="{{ site_settings.site_name }}">
-          {% else %}
-            <div class="nav-logo-icon">🧠</div>
-            <span>{{ site_settings.site_name|default:"Psychophysiology Lab" }}</span>
-          {% endif %}
-        </a>
+        <div class="footer-logos" style="display:flex; gap:16px; align-items:center; margin-bottom:16px; flex-wrap:wrap;">
+          <a href="{% url 'home' %}" class="footer-logo" style="display:inline-block;">
+            {% if site_settings.logo %}
+              <img src="{{ site_settings.logo.url }}" alt="{{ site_settings.site_name }}" style="height:55px; width:auto; object-fit:contain;">
+            {% else %}
+              <div class="nav-logo-icon" style="width:38px; height:38px; background:var(--gradient); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.15rem; box-shadow:0 4px 16px rgba(124,111,255,0.4);">🏫</div>
+            {% endif %}
+          </a>
+          <a href="{% url 'home' %}" class="footer-logo-secondary" style="display:inline-block;">
+            {% if site_settings.logo_secondary %}
+              <img src="{{ site_settings.logo_secondary.url }}" alt="Lab Logo" style="height:55px; width:auto; object-fit:contain;">
+            {% else %}
+              <div class="nav-logo-icon-secondary" style="width:38px; height:38px; background:var(--gradient-alt); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.15rem; box-shadow:0 4px 16px rgba(255,107,157,0.4);">🧠</div>
+            {% endif %}
+          </a>
+        </div>
         <p>{{ site_settings.tagline|default:"Psixofiziologiya sohasida ilg'or tadqiqotlar." }}</p>
         <div class="footer-social">
           {% if site_settings.twitter %}

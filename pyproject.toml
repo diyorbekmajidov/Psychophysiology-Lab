@@ -13,4 +13,5 @@ dependencies = [
     "django-modeltranslation>=0.20.3",
     "djangorestframework>=3.17.1",
     "pillow>=12.2.0",
+    "psycopg2-binary>=2.9.12",
 ]

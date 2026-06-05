@@ -7,6 +7,7 @@ class SiteSettings(models.Model):
     site_name    = models.CharField(_("Sayt nomi"), max_length=200, default="Psychophysiology Lab")
     tagline      = models.CharField(_("Qisqa tavsif"), max_length=300, blank=True)
     logo         = models.ImageField(_("Logo"), upload_to='site/', blank=True, null=True)
+    logo_secondary = models.ImageField(_("Qo'shimcha Logo (O'ng tomonda)"), upload_to='site/', blank=True, null=True)
     email        = models.EmailField(_("Email"), blank=True)
     phone        = models.CharField(_("Telefon"), max_length=50, blank=True)
     address      = models.TextField(_("Manzil"), blank=True)
