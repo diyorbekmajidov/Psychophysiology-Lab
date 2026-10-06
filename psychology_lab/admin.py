@@ -1,9 +1,10 @@
 from django.contrib import admin
+from django import forms
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
 from .models import (
-    SiteSettings, HeroSection, Page, ResearchArea,
+    SiteSettings, HeroSection, Page, MenuItem, ResearchArea,
     TeamMember, Publication, NewsEvent, GalleryImage,
     ContactMessage, StatCounter, Achievement
 )
@@ -47,9 +48,10 @@ class HeroSectionAdmin(TranslationAdmin):
 
 @admin.register(Page)
 class PageAdmin(TranslationAdmin):
-    list_display   = ('title', 'slug', 'is_published', 'show_in_menu', 'menu_order', 'updated_at')
-    list_editable  = ('is_published', 'show_in_menu', 'menu_order')
-    list_filter    = ('is_published', 'show_in_menu')
+    save_on_top = True
+    list_display   = ('title', 'slug', 'is_published', 'updated_at')
+    list_editable  = ('is_published',)
+    list_filter    = ('is_published',)
     search_fields  = ('title', 'content')
     prepopulated_fields = {'slug': ('title',)}
     fieldsets = (
@@ -59,10 +61,50 @@ class PageAdmin(TranslationAdmin):
         (_("Kontent"), {
             'fields': ('content',)
         }),
-        (_("Menyu sozlamalari"), {
-            'fields': ('is_published', 'show_in_menu', 'menu_order')
+        (_("Chop etish"), {
+            'fields': ('is_published',),
+            'description': _("Sahifani saqlagach, uni 'Menyu va ichki menyular' bo'limida bandga biriktiring."),
         }),
     )
+
+
+class MenuItemForm(forms.ModelForm):
+    class Meta:
+        model = MenuItem
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        roots = MenuItem.objects.filter(parent__isnull=True)
+        if self.instance.pk:
+            roots = roots.exclude(pk=self.instance.pk)
+        self.fields['parent'].queryset = roots
+        self.fields['page'].queryset = Page.objects.all().order_by('title')
+
+
+@admin.register(MenuItem)
+class MenuItemAdmin(TranslationAdmin):
+    form = MenuItemForm
+    list_display = ('title', 'parent', 'destination_type', 'linked_destination', 'order', 'is_active')
+    list_editable = ('order', 'is_active')
+    list_filter = ('is_active', 'destination_type', 'parent')
+    search_fields = ('title',)
+    list_select_related = ('parent', 'page')
+    save_on_top = True
+    fieldsets = (
+        (_("Menyu joylashuvi"), {'fields': ('title', 'parent', 'icon', 'order', 'is_active')}),
+        (_("Havola"), {
+            'fields': ('destination_type', 'route_name', 'page', 'external_url', 'open_in_new_tab'),
+            'description': _("Havola turini tanlang va shu turga mos maydonni to'ldiring. Oddiy sahifani shu yerda yaratish ham mumkin."),
+        }),
+    )
+
+    class Media:
+        js = ('js/menu-admin.js',)
+
+    @admin.display(description=_("Manzil"))
+    def linked_destination(self, obj):
+        return obj.url or _("Ichki menyu")
 
 
 @admin.register(ResearchArea)

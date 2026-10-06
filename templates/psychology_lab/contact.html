@@ -81,7 +81,7 @@
         <h2 style="font-size:1.5rem;margin-bottom:32px;">{% trans "Xabar" %} <span class="gradient-text">{% trans "Yuborish" %}</span></h2>
         <form method="post" id="contact-form" novalidate>
           {% csrf_token %}
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <div class="contact-name-row">
             <div class="form-group">
               <label for="contact-name">{% trans "To'liq ism" %} *</label>
               {{ form.name }}

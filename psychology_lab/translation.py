@@ -1,6 +1,6 @@
 from modeltranslation.translator import register, TranslationOptions
 from .models import (
-    SiteSettings, HeroSection, Page, ResearchArea,
+    SiteSettings, HeroSection, Page, MenuItem, ResearchArea,
     TeamMember, Publication, NewsEvent, StatCounter, Achievement
 )
 
@@ -18,6 +18,11 @@ class HeroSectionTranslationOptions(TranslationOptions):
 @register(Page)
 class PageTranslationOptions(TranslationOptions):
     fields = ('title', 'content', 'meta_description')
+
+
+@register(MenuItem)
+class MenuItemTranslationOptions(TranslationOptions):
+    fields = ('title',)
 
 
 @register(ResearchArea)

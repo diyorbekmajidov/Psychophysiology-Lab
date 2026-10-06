@@ -1,4 +1,4 @@
-{% load static i18n %}
+{% load static i18n lab_icons %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
 <head>
@@ -17,43 +17,59 @@
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/refresh.css' %}">
   {% block extra_css %}{% endblock %}
 </head>
 <body>
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ── NAVBAR ─────────────────────────────────────────────── -->
-<nav class="navbar" id="navbar">
+<nav class="navbar" id="navbar" aria-label="{% trans 'Asosiy navigatsiya' %}">
   <div class="nav-container">
-
-    <!-- Left Logo (University) -->
     <a href="{% url 'home' %}" class="nav-logo">
       {% if site_settings.logo %}
         <img src="{{ site_settings.logo.url }}" alt="{{ site_settings.site_name }}">
       {% else %}
-        <div class="nav-logo-icon">🏫</div>
-        <span class="nav-logo-text">{{ site_settings.site_name|default:"Universtet" }}</span>
+        <span class="nav-logo-icon">{% lab_icon 'brain' 25 %}</span>
       {% endif %}
+      <span class="nav-logo-text">{{ site_settings.site_name|default:"Psychophysiology Lab" }}</span>
     </a>
 
-    <!-- Center Nav Links -->
     <ul class="nav-links" id="navLinks">
-      <li><a href="{% url 'home' %}">{% trans "Bosh sahifa" %}</a></li>
-      <li><a href="{% url 'research' %}">{% trans "Tadqiqotlar" %}</a></li>
-      <li><a href="{% url 'team' %}">{% trans "Jamoa" %}</a></li>
-      <li><a href="{% url 'publications' %}">{% trans "Maqolalar" %}</a></li>
-      <li><a href="{% url 'news' %}">{% trans "Yangiliklar" %}</a></li>
-      {% for page in menu_pages %}
-        <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+      {% for item in menu_items %}
+        <li class="nav-item{% if item.visible_children %} has-children{% endif %}{% if item.route_name == 'contact' %} nav-cta{% endif %}{% if item.is_current %} active{% endif %}">
+          <div class="nav-item-main">
+            {% if item.url %}
+              <a href="{{ item.url }}"{% if item.is_exact %} aria-current="page"{% endif %}{% if item.open_in_new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>
+                {% if item.icon %}{% lab_icon item.icon 17 %}{% endif %}<span>{{ item.title }}</span>
+              </a>
+            {% else %}
+              <button type="button" class="nav-parent-label submenu-toggle" aria-expanded="false" aria-controls="submenu-{{ item.pk }}">
+                {% if item.icon %}{% lab_icon item.icon 17 %}{% endif %}<span>{{ item.title }}</span>
+              </button>
+            {% endif %}
+            {% if item.visible_children and item.url %}
+              <button type="button" class="submenu-toggle submenu-chevron" aria-label="{{ item.title }}: {% trans 'Ichki menyuni ochish' %}" aria-expanded="false" aria-controls="submenu-{{ item.pk }}">{% lab_icon 'chevron-down' 16 %}</button>
+            {% elif item.visible_children %}
+              <span class="submenu-chevron-static">{% lab_icon 'chevron-down' 16 %}</span>
+            {% endif %}
+          </div>
+          {% if item.visible_children %}
+            <ul class="submenu" id="submenu-{{ item.pk }}">
+              {% for child in item.visible_children %}
+                <li><a href="{{ child.url }}"{% if child.is_current %} class="active"{% endif %}{% if child.is_exact %} aria-current="page"{% endif %}{% if child.open_in_new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>{% if child.icon %}{% lab_icon child.icon 18 %}{% endif %}<span>{{ child.title }}</span></a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
       {% endfor %}
+    </ul>
 
-      <!-- ── Language Switcher ── -->
-      <li class="lang-switcher" id="langSwitcher">
-        <button class="lang-btn" id="langBtn">
-          {% if LANGUAGE_CODE == 'uz' %}🇺🇿 UZ
-          {% elif LANGUAGE_CODE == 'ru' %}🇷🇺 RU
-          {% else %}🇬🇧 EN{% endif %}
-          <i class="fas fa-chevron-down" style="font-size:0.6rem;margin-left:4px;"></i>
+    <div class="nav-right">
+      <div class="lang-switcher" id="langSwitcher">
+        <button type="button" class="lang-btn" id="langBtn" aria-expanded="false" aria-controls="langDropdown" aria-label="{% trans 'Tilni tanlash' %}">
+          {% if LANGUAGE_CODE == 'uz' %}UZ{% elif LANGUAGE_CODE == 'ru' %}RU{% else %}EN{% endif %}
+          {% lab_icon 'chevron-down' 15 %}
         </button>
         <div class="lang-dropdown" id="langDropdown">
           <form action="{% url 'set_language' %}" method="post" id="lang-form-uz">
@@ -81,27 +97,18 @@
             </button>
           </form>
         </div>
-      </li>
-
-      <li class="nav-cta"><a href="{% url 'contact' %}" class="btn btn-primary btn-sm">{% trans "Bog'lanish" %}</a></li>
-    </ul>
-
-
-    <!-- Right: secondary logo + mobile toggle -->
-    <div class="nav-right">
+      </div>
       <a href="{% url 'home' %}" class="nav-logo-secondary">
         {% if site_settings.logo_secondary %}
           <img src="{{ site_settings.logo_secondary.url }}" alt="Lab Logo">
         {% else %}
-          <div class="nav-logo-icon-secondary">🧠</div>
+          <span class="nav-logo-icon-secondary">{% lab_icon 'flask-conical' 24 %}</span>
         {% endif %}
       </a>
-
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
+      <button class="nav-toggle" id="navToggle" aria-label="{% trans 'Menyuni ochish' %}" aria-expanded="false" aria-controls="navLinks">
+        {% lab_icon 'menu' 23 'menu-open-icon' %}{% lab_icon 'x' 23 'menu-close-icon' %}
       </button>
     </div>
-
   </div>
 </nav>
 
@@ -162,20 +169,17 @@
       <div class="footer-col">
         <h4>{% trans "Navigatsiya" %}</h4>
         <ul class="footer-links">
-          <li><a href="{% url 'home' %}">{% trans "Bosh sahifa" %}</a></li>
-          <li><a href="{% url 'research' %}">{% trans "Tadqiqotlar" %}</a></li>
-          <li><a href="{% url 'team' %}">{% trans "Jamoa" %}</a></li>
-          <li><a href="{% url 'publications' %}">{% trans "Maqolalar" %}</a></li>
-          <li><a href="{% url 'news' %}">{% trans "Yangiliklar" %}</a></li>
-          <li><a href="{% url 'contact' %}">{% trans "Bog'lanish" %}</a></li>
+          {% for item in menu_items %}
+            {% if item.url %}<li><a href="{{ item.url }}"{% if item.open_in_new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ item.title }}</a></li>{% endif %}
+          {% endfor %}
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>{% trans "Sahifalar" %}</h4>
         <ul class="footer-links">
-          {% for page in menu_pages %}
-            <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+          {% for item in footer_page_items %}
+            <li><a href="{{ item.url }}"{% if item.open_in_new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ item.title }}</a></li>
           {% empty %}
             <li><a href="{% url 'contact' %}">{% trans "Bog'lanish" %}</a></li>
           {% endfor %}

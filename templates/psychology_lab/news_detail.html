@@ -15,8 +15,8 @@
       <span>{{ item.title|truncatechars:40 }}</span>
     </div>
     <span class="news-type-badge news-type-{{ item.news_type }}" style="margin-bottom:16px;display:inline-flex;">{{ item.get_news_type_display }}</span>
-    <h1 style="max-width:800px;margin:0 auto 16px;">{{ item.title }}</h1>
-    <div class="news-meta" style="justify-content:center;">
+    <h1 style="max-width:800px;">{{ item.title }}</h1>
+    <div class="news-meta">
       <span><i class="fas fa-calendar-alt"></i> {{ item.date|date:"d M Y" }}</span>
     </div>
   </div>
@@ -24,14 +24,14 @@
 
 <section class="section">
   <div class="container" style="max-width:900px;">
-    <div style="display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:start;">
+    <div class="detail-layout">
 
       <div>
         {% if item.image %}
           <img src="{{ item.image.url }}" alt="{{ item.title }}"
                style="width:100%;border-radius:var(--radius);margin-bottom:36px;aspect-ratio:16/9;object-fit:cover;">
         {% endif %}
-        <div class="glass-card" style="padding:40px;">
+        <div class="glass-card detail-main-card">
           <div class="rich-content">{{ item.content|safe }}</div>
         </div>
         <div style="margin-top:32px;">

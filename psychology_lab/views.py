@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.db.models import Prefetch
 from django.utils.translation import gettext_lazy as _
 from .models import (
-    SiteSettings, HeroSection, Page, ResearchArea,
+    SiteSettings, HeroSection, Page, MenuItem, ResearchArea,
     TeamMember, Publication, NewsEvent, GalleryImage, StatCounter, Achievement
 )
 from .forms import ContactForm
@@ -15,10 +16,27 @@ def get_site_context(request):
         settings_obj = SiteSettings.objects.first()
     except Exception:
         settings_obj = None
-    menu_pages = Page.objects.filter(is_published=True, show_in_menu=True).order_by('menu_order')
+    roots = MenuItem.objects.filter(is_active=True, parent__isnull=True).select_related('page').prefetch_related(
+        Prefetch('children', queryset=MenuItem.objects.filter(is_active=True).select_related('page'), to_attr='active_children')
+    )
+    menu_items = []
+    current_path = request.path
+    for item in roots:
+        item.visible_children = [child for child in item.active_children if child.url]
+        item.is_exact = bool(item.url and current_path == item.url)
+        item.is_current = bool(item.url and (item.is_exact or (item.url.endswith('/') and item.url != '/' and current_path.startswith(item.url))))
+        for child in item.visible_children:
+            child.is_exact = current_path == child.url
+            child.is_current = bool(child.is_exact or (child.url.endswith('/') and current_path.startswith(child.url)))
+        item.is_current = item.is_current or any(child.is_current for child in item.visible_children)
+        if item.url or item.visible_children:
+            menu_items.append(item)
+    footer_page_items = [item for item in menu_items if item.destination_type == 'page']
+    footer_page_items.extend(child for item in menu_items for child in item.visible_children)
     return {
         'site_settings': settings_obj,
-        'menu_pages': menu_pages,
+        'menu_items': menu_items,
+        'footer_page_items': footer_page_items,
         'LANGUAGE_CODE': request.LANGUAGE_CODE if hasattr(request, 'LANGUAGE_CODE') else 'uz',
     }
 
@@ -132,5 +150,8 @@ def page_detail(request, slug):
     context = get_site_context(request)
     page = get_object_or_404(Page, slug=slug, is_published=True)
     context['page_obj']   = page
+    context['page_menu_item'] = MenuItem.objects.filter(
+        page=page, is_active=True,
+    ).select_related('parent').first()
     context['page_title'] = page.title
     return render(request, 'psychology_lab/page_detail.html', context)

@@ -1,5 +1,5 @@
 {% extends "psychology_lab/base.html" %}
-{% load static i18n %}
+{% load static i18n lab_icons %}
 
 {% block title %}{{ area.title }} — {{ site_settings.site_name|default:"Psychophysiology Lab" }}{% endblock %}
 
@@ -15,23 +15,16 @@
       <span>{{ area.title|truncatechars:40 }}</span>
     </div>
     <div class="badge">
-      {% if area.icon == 'brain' %}🧠
-      {% elif area.icon == 'eye' %}👁️
-      {% elif area.icon == 'heart' %}❤️
-      {% elif area.icon == 'chart' %}📊
-      {% elif area.icon == 'lab' %}🔬
-      {% elif area.icon == 'signal' %}📡
-      {% elif area.icon == 'neuron' %}⚡
-      {% else %}💻{% endif %}
+      {% lab_icon area.icon 18 %}
       {% trans "Tadqiqot Yo'nalishi" %}
     </div>
-    <h1 style="max-width:800px;margin:0 auto 16px;"><span class="gradient-text">{{ area.title }}</span></h1>
+    <h1 style="max-width:800px;"><span class="gradient-text">{{ area.title }}</span></h1>
   </div>
 </div>
 
 <section class="section">
   <div class="container" style="max-width:1100px;">
-    <div style="display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:start;">
+    <div class="detail-layout">
 
       <!-- Main Content -->
       <div>
@@ -39,7 +32,7 @@
           <img src="{{ area.image.url }}" alt="{{ area.title }}"
                style="width:100%;border-radius:var(--radius);margin-bottom:36px;aspect-ratio:16/9;object-fit:cover;">
         {% endif %}
-        <div class="glass-card fade-up" style="padding:40px;">
+        <div class="glass-card fade-up detail-main-card">
           <div class="rich-content">{{ area.description|safe }}</div>
         </div>
         <div style="margin-top:32px;">
@@ -58,16 +51,7 @@
             </h3>
             {% for r in other_areas %}
               <div style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;">
-                <div style="font-size:1.4rem;">
-                  {% if r.icon == 'brain' %}🧠
-                  {% elif r.icon == 'eye' %}👁️
-                  {% elif r.icon == 'heart' %}❤️
-                  {% elif r.icon == 'chart' %}📊
-                  {% elif r.icon == 'lab' %}🔬
-                  {% elif r.icon == 'signal' %}📡
-                  {% elif r.icon == 'neuron' %}⚡
-                  {% else %}💻{% endif %}
-                </div>
+                <div class="related-icon">{% lab_icon r.icon 22 %}</div>
                 <div style="flex:1;">
                   <a href="{% url 'research_detail' r.pk %}" style="display:block;color:var(--text-primary);font-weight:600;font-size:0.9rem;line-height:1.4;transition:color var(--transition);">{{ r.title }}</a>
                 </div>

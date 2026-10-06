@@ -2,7 +2,7 @@
 {% load static i18n %}
 
 {% block title %}{{ page_obj.title }} — {{ site_settings.site_name|default:"Psychophysiology Lab" }}{% endblock %}
-{% block meta_description %}{{ page_obj.meta_description|default:site_settings.tagline }}{% endblock %}
+{% block meta_description %}{% if page_obj.meta_description %}{{ page_obj.meta_description }}{% elif site_settings %}{{ site_settings.tagline }}{% endif %}{% endblock %}
 
 {% block content %}
 
@@ -11,6 +11,10 @@
     <div class="breadcrumb">
       <a href="{% url 'home' %}">{% trans "Bosh sahifa" %}</a>
       <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
+      {% if page_menu_item.parent and page_menu_item.parent.url %}
+        <a href="{{ page_menu_item.parent.url }}">{{ page_menu_item.parent.title }}</a>
+        <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
+      {% endif %}
       <span>{{ page_obj.title }}</span>
     </div>
     {% if page_obj.banner_image %}
@@ -25,7 +29,7 @@
 
 <section class="section">
   <div class="container" style="max-width:900px;">
-    <div class="glass-card fade-up" style="padding:48px;">
+    <div class="glass-card fade-up page-detail-card">
       {% if page_obj.banner_image %}
         <img src="{{ page_obj.banner_image.url }}" alt="{{ page_obj.title }}"
              style="width:100%;border-radius:var(--radius-sm);margin-bottom:36px;aspect-ratio:16/6;object-fit:cover;">

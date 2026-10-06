@@ -1,5 +1,5 @@
 {% extends "psychology_lab/base.html" %}
-{% load static i18n %}
+{% load static i18n lab_icons %}
 
 {% block content %}
 
@@ -10,23 +10,20 @@
       <img src="{{ hero.background_image.url }}" alt="Lab background">
     {% endif %}
   </div>
-  <div class="hero-orb-wrap wrapper-1"><div class="hero-orb hero-orb-1"></div></div>
-  <div class="hero-orb-wrap wrapper-2"><div class="hero-orb hero-orb-2"></div></div>
-  <div class="hero-particles" id="heroParticles"></div>
   <div class="container">
     <div class="hero-content">
       <div class="badge">
         <i class="fas fa-atom"></i>
         {% trans "Psixofiziologiya Tadqiqotlari" %}
       </div>
-      <h3>
+      <h1>
         {% if hero %}
           {% autoescape off %}{{ hero.title }}{% endautoescape %}
         {% else %}
           {% trans "Inson Miyasini" %}<br>
           <span class="gradient-text">{% trans "O'rganamiz" %}</span>
         {% endif %}
-      </h3>
+      </h1>
       <p>
         {% if hero %}{{ hero.subtitle }}
         {% else %}{% trans "Zamonaviy psixofiziologiya laboratoriyasi. Miya faoliyati, idrok va xulq-atvor munosabatlarini o'rganamiz." %}
@@ -44,10 +41,6 @@
       </div>
     </div>
   </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <span>{% trans "Scroll" %}</span>
-  </div>
 </section>
 
 <!-- ── STATS ─────────────────────────────────────────────────── -->
@@ -57,7 +50,7 @@
     <div class="stats-grid">
       {% for stat in stats %}
       <div class="stat-item fade-up">
-        <div class="stat-value" data-target="{{ stat.value }}">0</div>
+        <div class="stat-value">{{ stat.value }}</div>
         <div class="stat-label">{{ stat.label }}</div>
       </div>
       {% endfor %}
@@ -79,14 +72,7 @@
       {% for area in research_areas %}
       <div class="glass-card research-card fade-up">
         <div class="research-icon">
-          {% if area.icon == 'brain' %}🧠
-          {% elif area.icon == 'eye' %}👁️
-          {% elif area.icon == 'heart' %}❤️
-          {% elif area.icon == 'chart' %}📊
-          {% elif area.icon == 'lab' %}🔬
-          {% elif area.icon == 'signal' %}📡
-          {% elif area.icon == 'neuron' %}⚡
-          {% else %}💻{% endif %}
+          {% lab_icon area.icon 29 %}
         </div>
         <h3><a href="{% url 'research_detail' area.pk %}">{{ area.title }}</a></h3>
         <div class="rich-content">{{ area.description|safe }}</div>

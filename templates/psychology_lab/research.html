@@ -1,5 +1,5 @@
 {% extends "psychology_lab/base.html" %}
-{% load static i18n %}
+{% load static i18n lab_icons %}
 
 {% block title %}{% trans "Tadqiqotlar" %} — {{ site_settings.site_name|default:"Psychophysiology Lab" }}{% endblock %}
 
@@ -29,14 +29,7 @@
                    style="width:100%;height:180px;object-fit:cover;border-radius:12px 12px 0 0;margin:-32px -32px 24px -32px;width:calc(100% + 64px);">
             {% endif %}
             <div class="research-icon">
-              {% if area.icon == 'brain' %}🧠
-              {% elif area.icon == 'eye' %}👁️
-              {% elif area.icon == 'heart' %}❤️
-              {% elif area.icon == 'chart' %}📊
-              {% elif area.icon == 'lab' %}🔬
-              {% elif area.icon == 'signal' %}📡
-              {% elif area.icon == 'neuron' %}⚡
-              {% else %}💻{% endif %}
+              {% lab_icon area.icon 29 %}
             </div>
             <h3><a href="{% url 'research_detail' area.pk %}">{{ area.title }}</a></h3>
             <div class="rich-content">{{ area.description|safe }}</div>
